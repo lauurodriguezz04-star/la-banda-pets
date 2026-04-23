@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Banda Pets – Peluditos con Estilo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #FFD700;
+      --orange: #FF6B1A;
+      --blue: #2D4EC7;
+      --purple: #7C3AED;
+      --pink: #FF4E9F;
+      --dark: #1A1A2E;
+      --light: #FFF9F0;
+      --card-bg: #ffffff;
+      --radius: 20px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 249, 240, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 3px solid var(--yellow);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.6rem;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--orange);
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      border: 3px solid var(--dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-cart {
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.5rem 1.2rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .btn-cart:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 26, 0.4);
+    }
+
+    .cart-count {
+      background: var(--yellow);
+      color: var(--dark);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1A1A2E 0%, #2D4EC7 50%, #7C3AED 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 70px;
+    }
+
+    .hero-bg-shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shape-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--yellow);
+      top: -100px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      width: 200px;
+      height: 200px;
+      background: var(--pink);
+      bottom: 100px;
+      left: -50px;
+      animation-delay: 2s;
+    }
+
+    .shape-3 {
+      width: 150px;
+      height: 150px;
+      background: var(--orange);
+      top: 200px;
+      left: 30%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-30px) rotate(10deg);
+      }
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 span {
+      color: var(--yellow);
+    }
+
+    .hero-text p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--dark);
+      border: none;
+      border-radius: 50px;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(255, 215, 0, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      border-radius: 50px;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: white;
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 1.2rem;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .stat-number {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+      color: var(--yellow);
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 0.2rem;
+    }
+
+    .hero-emoji-row {
+      display: flex;
+      gap: 1rem;
+      font-size: 2.5rem;
+      animation: bounce-row 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce-row {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* BENEFITS */
+    .benefits-section {
+      background: var(--yellow);
+      padding: 3rem 2rem;
+      overflow: hidden;
+    }
+
+    .benefits-scroll {
+      display: flex;
+      gap: 3rem;
+      animation: scroll-left 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--dark);
+      flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: #666;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    /* FILTERS */
+    .filters {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      border: 3px solid transparent;
+      background: white;
+      color: var(--dark);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    /* PRODUCT GRID */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      border: 2px solid transparent;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      border-color: var(--yellow);
+    }
+
+    .product-image-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+
+    .product-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      transition: transform 0.4s;
+    }
+
+    .product-card:hover .product-img-placeholder {
+      transform: scale(1.1);
+    }
+
+    .badge-hot {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--pink);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 3px 10px rgba(255, 78, 159, 0.4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .badge-new {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--blue);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 1.2rem;
+    }
+
+    .product-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.25rem;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .product-cat {
+      color: #999;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sizes-row {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .size-chip {
+      background: #f0f0f5;
+      color: var(--dark);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.2rem 1.2rem;
+      border-top: 2px dashed #f0f0f0;
+    }
+
+    .price {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+      color: var(--orange);
+    }
+
+    .price-note {
+      font-size: 0.75rem;
+      color: #999;
+      font-weight: 600;
+    }
+
+    .btn-add {
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-add:hover {
+      background: var(--purple);
+      transform: scale(1.05);
+    }
+
+    /* SIZE GUIDE */
+    .size-section {
+      background: linear-gradient(135deg, #1A1A2E, #2D4EC7);
+      color: white;
+    }
+
+    .size-section .section-title {
+      color: white;
+    }
+
+    .size-section .section-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .size-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .size-table-wrap {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .size-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .size-table th {
+      background: var(--yellow);
+      color: var(--dark);
+      padding: 0.8rem 1rem;
+      text-align: center;
+      font-weight: 900;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .size-table td {
+      padding: 0.9rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 700;
+      color: white;
+    }
+
+    .size-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .size-table tr:hover td {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .size-label {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--yellow);
+    }
+
+    .breeds-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .breed-group {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .breed-group-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--yellow);
+      margin-bottom: 0.6rem;
+    }
+
+    .breed-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .breed-tag {
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0.2rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    /* HOW IT WORKS */
+    .how-section {
+      background: white;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius);
+      transition: transform 0.3s;
+    }
+
+    .step-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .step-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border: 4px solid var(--dark);
+    }
+
+    .step-num {
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.9rem;
+      color: var(--orange);
+      margin-bottom: 0.3rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .step-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    /* SHIPPING */
+    .shipping-section {
+      background: linear-gradient(135deg, #FFF9F0, #FFE8CC);
+    }
+
+    .shipping-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--orange);
+    }
+
+    .info-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-card-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--dark);
+    }
+
+    .info-card ul {
+      list-style: none;
+    }
+
+    .info-card ul li {
+      padding: 0.4rem 0;
+      color: #555;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .info-card ul li::before {
+      content: "✓";
+      color: var(--orange);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    /* CART MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .cart-modal {
+      background: white;
+      border-radius: 24px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+      animation: slide-up 0.3s ease;
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.8rem;
+      border-bottom: 2px solid #f0f0f0;
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 1;
+    }
+
+    .cart-header h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+    }
+
+    .close-btn {
+      background: #f0f0f0;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .close-btn:hover {
+      background: #e0e0e0;
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: 3rem;
+      font-size: 1.1rem;
+      color: #999;
+      font-weight: 700;
+    }
+
+    .cart-empty span {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 1.8rem;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .cart-item-emoji {
+      font-size: 2.5rem;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-name {
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .cart-item-detail {
+      color: #999;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    .cart-item-price {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--orange);
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .cart-item-remove:hover {
+      color: #ff4444;
+    }
+
+    .cart-footer {
+      padding: 1.5rem 1.8rem;
+      border-top: 2px solid #f0f0f0;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .cart-total-label {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .cart-total-price {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.6rem;
+      color: var(--orange);
+    }
+
+    .btn-checkout {
+      width: 100%;
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 1rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-checkout:hover {
+      background: var(--purple);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+    }
+
+    /* SIZE SELECTOR IN CARD */
+    .size-selector {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .size-btn {
+      padding: 0.3rem 0.7rem;
+      border-radius: 8px;
+      border: 2px solid #e0e0e0;
+      background: white;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .size-btn:hover,
+    .size-btn.selected {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: white;
+    }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: bounce 3s ease-in-out infinite;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1) translateY(-4px);
+      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+      animation: none;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 6rem;
+      right: 2rem;
+      z-index: 3000;
+      background: var(--dark);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand .nav-logo {
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .social-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+    }
+
+    .social-btn:hover {
+      background: var(--orange);
+    }
+
+    .footer-col h4 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--yellow);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-col ul li a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* HIDDEN */
+    .hidden {
+      display: none !important;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      .hero-badges {
+        justify-content: center;
+      }
+
+      .size-content {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+    }
+
+    /* BG COLORS PER CATEGORY */
+    .bg-estampado {
+      background: linear-gradient(135deg, #FFE8F0, #FFD6E8);
+    }
+
+    .bg-unicolor {
+      background: linear-gradient(135deg, #E8F0FF, #D6E4FF);
+    }
+
+    .bg-futbol {
+      background: linear-gradient(135deg, #E8FFE8, #D6FFD6);
+    }
+
+    .bg-heroes {
+      background: linear-gradient(135deg, #FFF0E8, #FFE0CC);
+    }
+
+    .bg-mundial {
+      background: linear-gradient(135deg, #E8EDFF, #FFE8E8);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="img/logo.png" alt="Logo La Banda Pets" style="height: 50px; width: auto;">
+      La Banda <span>Pets</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#productos">Gorras</a></li>
+      <li><a href="#tallas">Tallas</a></li>
+      <li><a href="#como-comprar">¿Cómo comprar?</a></li>
+      <li><a href="#envios">Envíos</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-cart" onclick="openCart()">
+        🛒 Carrito <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badges">
+          <span class="badge">🏆 +2.000 clientes felices</span>
+          <span class="badge">🇨🇴 Hecho en Colombia</span>
+          <span class="badge">✋ A mano con amor</span>
+        </div>
+        <h1>Gorras para tus <span>peluditos</span> con estilo 🐾</h1>
+        <p>Hechas a mano, cómodas, livianas y diseñadas especialmente para adaptarse a la carita de tu mascota.
+          ¡Protección solar con muchísima ternura!</p>
+        <div class="hero-cta">
+          <a href="#productos" class="btn-primary">🛍️ Ver Gorras</a>
+          <a href="#tallas" class="btn-secondary">📏 Guía de Tallas</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-emoji-row">🐶🎩🐱🧢🐕</div>
+        <div class="hero-stat-grid">
+          <div class="stat-card">
+            <div class="stat-number">+2.000</div>
+            <div class="stat-label">Clientes en todo el país</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Tallas disponibles</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Diseños únicos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">🇨🇴</div>
+            <div class="stat-label">Envíos nacionales</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SCROLL -->
+  <div class="benefits-section">
+    <div class="benefits-scroll" id="benefitsScroll">
+      <span class="benefit-item">☀️ Protección solar</span>
+      <span class="benefit-item">🌟 Material suave</span>
+      <span class="benefit-item">✋ Hechas a mano</span>
+      <span class="benefit-item">🎨 Diseños únicos</span>
+      <span class="benefit-item">👁️ Visibilidad y seguridad</span>
+      <span class="benefit-item">🐾 Cómodo ajuste</span>
+      <span class="benefit-item">💛 Con amor colombiano</span>
+      <span class="benefit-item">📦 Envíos nacionales</span>
+      <span class="benefit-item">☀️ Protección solar</span>
+      <span class="benefit-item">🌟 Material suave</span>
+      <span class="benefit-item">✋ Hechas a mano</span>
+      <span class="benefit-item">🎨 Diseños únicos</span>
+      <span class="benefit-item">👁️ Visibilidad y seguridad</span>
+      <span class="benefit-item">🐾 Cómodo ajuste</span>
+      <span class="benefit-item">💛 Con amor colombiano</span>
+      <span class="benefit-item">📦 Envíos nacionales</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="productos" style="background: #fafafa;">
+    <div class="section-header">
+      <div class="section-tag">Catálogo</div>
+      <h2 class="section-title">Nuestras Gorras 🎩</h2>
+      <p class="section-subtitle">Encuentra el estilo perfecto para tu mejor amigo</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">🐾 Todos</button>
+      <button class="filter-btn" onclick="filterProducts('unicolor', this)">🎨 Unicolor</button>
+      <button class="filter-btn" onclick="filterProducts('estampado', this)">✨ Estampados</button>
+      <button class="filter-btn" onclick="filterProducts('futbol', this)">⚽ Fútbol Colombia</button>
+      <button class="filter-btn" onclick="filterProducts('heroes', this)">🦸 Superhéroes</button>
+      <button class="filter-btn" onclick="filterProducts('mundial', this)">🏆 Mundial 2026</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- UNICOLOR -->
+      <div class="product-card" data-cat="unicolor">
+        <div class="product-image-wrap bg-unicolor">
+          <div class="product-img-placeholder">🧢</div>
+          <span class="badge-hot">🔥 Más vendido</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Unicolor</div>
+          <div class="product-name">Tono Lila</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$25.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Tono Lila', '🧢', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="unicolor">
+        <div class="product-image-wrap bg-unicolor">
+          <div class="product-img-placeholder">🔴</div>
+          <span class="badge-hot">🔥 Más vendido</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Unicolor</div>
+          <div class="product-name">Tono Rojo</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$25.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Tono Rojo', '🔴', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="unicolor">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #d0e8ff, #b0d4ff);">
+          <div class="product-img-placeholder">🔵</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Unicolor</div>
+          <div class="product-name">Tono Celeste</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$25.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Tono Celeste', '🔵', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="unicolor">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #ffd6e8, #ffbcd8);">
+          <div class="product-img-placeholder">🌸</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Unicolor</div>
+          <div class="product-name">Tono Rosado</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$25.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Tono Rosado', '🌸', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="unicolor">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #2244aa, #1a3388);">
+          <div class="product-img-placeholder">👑</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Unicolor</div>
+          <div class="product-name">Azul Rey</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$25.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Azul Rey', '👑', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="unicolor">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #1a1a1a, #333);">
+          <div class="product-img-placeholder">🖤</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Unicolor</div>
+          <div class="product-name">Tono Negro</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$25.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Tono Negro', '🖤', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="unicolor">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #1a4a2a, #2d7a44);">
+          <div class="product-img-placeholder">💚</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Unicolor</div>
+          <div class="product-name">Verde Cali</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$25.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Verde Cali', '💚', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="unicolor">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #0a2a4a, #1a4a6a);">
+          <div class="product-img-placeholder">🌊</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Unicolor</div>
+          <div class="product-name">Azul Petróleo</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$25.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Azul Petróleo', '🌊', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <!-- ESTAMPADOS -->
+      <div class="product-card" data-cat="estampado">
+        <div class="product-image-wrap bg-estampado">
+          <div class="product-img-placeholder">⚡</div>
+          <span class="badge-new">Pokémon</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Estampado</div>
+          <div class="product-name">Referencia Pokémon</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Gorra Pokémon', '⚡', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="estampado">
+        <div class="product-image-wrap bg-estampado">
+          <div class="product-img-placeholder">💙</div>
+          <span class="badge-hot">🔥 Más vendido</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Estampado</div>
+          <div class="product-name">Referencia Stitch</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Gorra Stitch', '💙', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="estampado">
+        <div class="product-image-wrap bg-estampado">
+          <div class="product-img-placeholder">🍪</div>
+          <span class="badge-hot">🔥 Más vendido</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Estampado</div>
+          <div class="product-name">Come Galletas</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Come Galletas', '🍪', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="estampado">
+        <div class="product-image-wrap bg-estampado">
+          <div class="product-img-placeholder">🎀</div>
+          <span class="badge-hot">🔥 Más vendido</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Estampado</div>
+          <div class="product-name">Gata Marie</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Gata Marie', '🎀', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="estampado">
+        <div class="product-image-wrap bg-estampado">
+          <div class="product-img-placeholder">🌺</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Estampado</div>
+          <div class="product-name">Hello Kitty</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Hello Kitty', '🌺', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="estampado">
+        <div class="product-image-wrap bg-estampado">
+          <div class="product-img-placeholder">🐘</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Estampado</div>
+          <div class="product-name">Referencia Dumbo</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Dumbo', '🐘', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="estampado">
+        <div class="product-image-wrap bg-estampado">
+          <div class="product-img-placeholder">🖱️</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Estampado</div>
+          <div class="product-name">Mickey</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Mickey', '🖱️', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="estampado">
+        <div class="product-image-wrap bg-estampado">
+          <div class="product-img-placeholder">🌈</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Estampado</div>
+          <div class="product-name">Mickey Multicolor</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Mickey Multicolor', '🌈', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <!-- FÚTBOL -->
+      <div class="product-card" data-cat="futbol">
+        <div class="product-image-wrap bg-futbol">
+          <img src="img/gorra_atletico_nacional.png" alt="Gorra Atlético Nacional" class="product-img-placeholder"
+            style="object-fit: contain; padding: 1rem;">
+          <span class="badge-new">Nacional</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Equipos de Fútbol</div>
+          <div class="product-name">Atlético Nacional</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$32.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Atlético Nacional', '🟢', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="futbol">
+        <div class="product-image-wrap bg-futbol">
+          <div class="product-img-placeholder">🔴</div>
+          <span class="badge-new">Santa Fe</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Equipos de Fútbol</div>
+          <div class="product-name">Independiente Santa Fé</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$32.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Santa Fé', '🔴', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="futbol">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #ffeecc, #ffd699);">
+          <div class="product-img-placeholder">🔵</div>
+          <span class="badge-new">Millonarios</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Equipos de Fútbol</div>
+          <div class="product-name">Millonarios F.C – La Clásica</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$32.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Millonarios La Clásica', '🔵', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="futbol">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #ffcccc, #ff9999);">
+          <div class="product-img-placeholder">❤️</div>
+          <span class="badge-new">América</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Equipos de Fútbol</div>
+          <div class="product-name">América de Cali</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$32.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('América de Cali', '❤️', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="futbol">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #ffe0cc, #ffcc99);">
+          <img src="img/gorra_deportes_tolima.png" alt="Gorra Deportes Tolima" class="product-img-placeholder"
+            style="object-fit: contain; padding: 1rem;">
+          <span class="badge-new">Tolima</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Equipos de Fútbol</div>
+          <div class="product-name">Deportes Tolima</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$32.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Deportes Tolima', '🟡', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="futbol">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #e0ffe0, #b0ffb0);">
+          <div class="product-img-placeholder">✍️</div>
+          <span class="badge-new">Personalizado</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Equipos de Fútbol</div>
+          <div class="product-name">¿No está tu equipo? ¡Personaliza!</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">Consultar</div>
+            <div class="price-note">Personalizado</div>
+          </div>
+          <a href="https://wa.me/573223289900?text=Hola!%20Quiero%20personalizar%20una%20gorrita%20para%20mi%20mascota%20🐾"
+            target="_blank" class="btn-add" style="text-decoration:none;">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- SUPERHÉROES -->
+      <div class="product-card" data-cat="heroes">
+        <div class="product-image-wrap bg-heroes">
+          <div class="product-img-placeholder">🕷️</div>
+          <span class="badge-hot">🔥 Más vendido</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Superhéroes</div>
+          <div class="product-name">Dead Pool</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Dead Pool', '🕷️', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="heroes">
+        <div class="product-image-wrap bg-heroes">
+          <div class="product-img-placeholder">🦸</div>
+          <span class="badge-hot">🔥 Más vendido</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Superhéroes</div>
+          <div class="product-name">Superman</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Superman', '🦸', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="heroes">
+        <div class="product-image-wrap bg-heroes">
+          <div class="product-img-placeholder">⚡</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Superhéroes</div>
+          <div class="product-name">Flash</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Flash', '⚡', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="heroes">
+        <div class="product-image-wrap bg-heroes">
+          <div class="product-img-placeholder">🦇</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Superhéroes</div>
+          <div class="product-name">Batman</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Batman', '🦇', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="heroes">
+        <div class="product-image-wrap bg-heroes">
+          <div class="product-img-placeholder">💪</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Superhéroes</div>
+          <div class="product-name">Hulk</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Hulk', '💪', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="heroes">
+        <div class="product-image-wrap bg-heroes">
+          <div class="product-img-placeholder">👸</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Superhéroes</div>
+          <div class="product-name">Mujer Maravilla</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Mujer Maravilla', '👸', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="heroes">
+        <div class="product-image-wrap bg-heroes">
+          <div class="product-img-placeholder">🧣</div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Superhéroes</div>
+          <div class="product-name">Hombre Araña</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$30.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Hombre Araña', '🧣', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <!-- MUNDIAL 2026 -->
+      <div class="product-card" data-cat="mundial">
+        <div class="product-image-wrap bg-mundial">
+          <div class="product-img-placeholder">🏆</div>
+          <span class="badge-new">Mundial 2026</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Selección Colombia – Mundial 2026</div>
+          <div class="product-name">Edición Mundial – Tono Azul-Rojo</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$35.000</div>
+            <div class="price-note">Edición especial</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Selección Colombia Mundial', '🏆', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="mundial">
+        <div class="product-image-wrap bg-mundial">
+          <div class="product-img-placeholder">🦋</div>
+          <span class="badge-new">Mundial 2026</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Selección Colombia – Mundial 2026</div>
+          <div class="product-name">Edición Mundial – Alas de Mariposa</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$35.000</div>
+            <div class="price-note">Edición especial</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Mundial Alas de Mariposa', '🦋', this)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="futbol">
+        <div class="product-image-wrap" style="background: linear-gradient(135deg, #fffde7, #fff9c4);">
+          <div class="product-img-placeholder">⚽</div>
+          <span class="badge-new">Colombia</span>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">Equipos de Fútbol</div>
+          <div class="product-name">Colombia – Tono Amarillo</div>
+          <div class="size-selector">
+            <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div>
+            <div class="price">$32.000</div>
+            <div class="price-note">+ envío</div>
+          </div>
+          <button class="btn-add" onclick="addToCart('Colombia Amarillo', '⚽', this)">+ Agregar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIZE GUIDE -->
+  <section class="size-section" id="tallas">
+    <div class="section-header">
+      <div class="section-tag" style="background: var(--yellow); color: var(--dark);">Medidas</div>
+      <h2 class="section-title">Guía de Tallas 📏</h2>
+      <p class="section-subtitle">Mide con cinta métrica la cabeza de tu peludito</p>
+    </div>
+
+    <div class="size-content">
+      <div>
+        <div class="size-table-wrap">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Talla</th>
+                <th>A) Largo Gorra</th>
+                <th>B) Circunferencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="size-label">XS</span></td>
+                <td>10.5 cm</td>
+                <td>25 – 31 cm</td>
+              </tr>
+              <tr>
+                <td><span class="size-label">S</span></td>
+                <td>13.5 cm</td>
+                <td>35 – 38 cm</td>
+              </tr>
+              <tr>
+                <td><span class="size-label">M</span></td>
+                <td>16 cm</td>
+                <td>42 – 48 cm</td>
+              </tr>
+              <tr>
+                <td><span class="size-label">L</span></td>
+                <td>17 cm</td>
+                <td>46 – 55 cm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-top:1rem; font-weight:600; text-align:center;">
+          ⚠️ Nuestras tallas son propias. No son iguales a otros fabricantes.
+        </p>
+      </div>
+
+      <div class="breeds-list">
+        <div class="breed-group">
+          <div class="breed-group-title">🐾 XS – Mini pets</div>
+          <div class="breed-tags">
+            <span class="breed-tag">Gatos</span>
+            <span class="breed-tag">Pinscher</span>
+            <span class="breed-tag">Chihuahua</span>
+            <span class="breed-tag">Pomerania</span>
+            <span class="breed-tag">Mini Toy</span>
+            <span class="breed-tag">Yorkie mini</span>
+          </div>
+        </div>
+        <div class="breed-group">
+          <div class="breed-group-title">🐕 S – Pequeños</div>
+          <div class="breed-tags">
+            <span class="breed-tag">Schnauzer</span>
+            <span class="breed-tag">French Poodle</span>
+            <span class="breed-tag">Pekinés</span>
+            <span class="breed-tag">Pug</span>
+            <span class="breed-tag">Shih Tzu</span>
+            <span class="breed-tag">Westie</span>
+            <span class="breed-tag">Yorkie Terrier</span>
+          </div>
+        </div>
+        <div class="breed-group">
+          <div class="breed-group-title">🐶 M – Medianos</div>
+          <div class="breed-tags">
+            <span class="breed-tag">Beagle</span>
+            <span class="breed-tag">Boston Terrier</span>
+            <span class="breed-tag">Bulldog Francés</span>
+            <span class="breed-tag">Cocker Spaniel</span>
+            <span class="breed-tag">Criollos</span>
+          </div>
+        </div>
+        <div class="breed-group">
+          <div class="breed-group-title">🦮 L – Grandes</div>
+          <div class="breed-tags">
+            <span class="breed-tag">Bulldog Inglés</span>
+            <span class="breed-tag">Pastor Alemán</span>
+            <span class="breed-tag">Labrador</span>
+            <span class="breed-tag">Golden</span>
+            <span class="breed-tag">Lobo Siberiano</span>
+            <span class="breed-tag">Pitbull</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO BUY -->
+  <section class="how-section" id="como-comprar">
+    <div class="section-header">
+      <div class="section-tag">Proceso</div>
+      <h2 class="section-title">¿Cómo comprar? 🛒</h2>
+      <p class="section-subtitle">Fácil, rápido y con todo el amor del mundo</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon" style="background: #FFF0D6; border-color: var(--orange);">📏</div>
+        <div class="step-num">Paso 1</div>
+        <div class="step-title">Mide a tu peludo</div>
+        <div class="step-desc">Con cinta métrica, mide la circunferencia y el largo de la cabeza de tu mascota y elige
+          la talla.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon" style="background: #E8EDFF; border-color: var(--blue);">🎨</div>
+        <div class="step-num">Paso 2</div>
+        <div class="step-title">Elige tu gorrita</div>
+        <div class="step-desc">Escoge el diseño, color y talla que más te guste para tu mejor amigo. ¡Hay para todos los
+          gustos!</div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon" style="background: #E8FFE8; border-color: #25D366;">💬</div>
+        <div class="step-num">Paso 3</div>
+        <div class="step-title">Escríbenos</div>
+        <div class="step-desc">Contáctanos por WhatsApp con tu pedido y te daremos todos los detalles de pago y envío.
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon" style="background: #FFE8F0; border-color: var(--pink);">💳</div>
+        <div class="step-num">Paso 4</div>
+        <div class="step-title">Paga fácil</div>
+        <div class="step-desc">Aceptamos Nequi, Daviplata y pago contraentrega en Bogotá. ¡Confirmado el pago, te
+          enviamos!</div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon" style="background: #FFFDE8; border-color: var(--yellow);">📦</div>
+        <div class="step-num">Paso 5</div>
+        <div class="step-title">¡Recibe tu gorrita!</div>
+        <div class="step-desc">En Bogotá entre 1 y 3 días hábiles. A nivel nacional entre 3 y 6 días. ¡Tu peludito te lo
+          agradecerá!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHIPPING & INFO -->
+  <section class="shipping-section" id="envios">
+    <div class="section-header">
+      <div class="section-tag">Info importante</div>
+      <h2 class="section-title">Ten en Cuenta 📋</h2>
+      <p class="section-subtitle">Todo lo que necesitas saber antes de tu compra</p>
+    </div>
+    <div class="shipping-grid">
+      <div class="info-card">
+        <div class="info-card-icon">🚚</div>
+        <div class="info-card-title">Envíos</div>
+        <ul>
+          <li>Ubicados en Bogotá D.C.</li>
+          <li>Envío no incluido en el precio del producto</li>
+          <li>Envíos nacionales con Interrapidísimo y Envía</li>
+          <li>Bogotá: 1 a 3 días hábiles</li>
+          <li>Nacional: 3 a 6 días hábiles</li>
+          <li>Personalizados: tiempo extendido, se informa antes</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">💳</div>
+        <div class="info-card-title">Métodos de Pago</div>
+        <ul>
+          <li>Nequi</li>
+          <li>Daviplata</li>
+          <li>Contraentrega (solo Bogotá)</li>
+          <li>Gorrita se envía al confirmar el pago</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🔄</div>
+        <div class="info-card-title">Garantía y Cambios</div>
+        <ul>
+          <li>Cambios por talla o referencia hasta 5 días después</li>
+          <li>Producto sin uso, buen estado y con etiqueta</li>
+          <li>No se hacen devoluciones de dinero</li>
+          <li>Envío del cambio corre por cuenta del cliente</li>
+        </ul>
+      </div>
+      <div class="info-card" style="border-top-color: var(--purple);">
+        <div class="info-card-icon">✨</div>
+        <div class="info-card-title">Personalizados</div>
+        <ul>
+          <li>Requieren pago anticipado del 100%</li>
+          <li>No se aceptan devoluciones ni cambios</li>
+          <li>El cliente aprueba el diseño antes de fabricar</li>
+          <li>¡Escríbenos para cotizar tu diseño único!</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="color: white; margin-bottom: 1rem; display: flex;">
+          <img src="img/logo.png" alt="Logo La Banda Pets" style="height: 50px; width: auto;">
+          La Banda <span style="color: var(--orange);">Pets</span>
+        </a>
+        <p>Peluditos con estilo. Hacemos gorras para mascotas con amor, a mano, diseñadas especialmente para que tu
+          mejor amigo se vea increíble y esté protegido del sol. +2.000 familias confían en nosotros.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/labandapetss" target="_blank" class="social-btn">📷</a>
+          <a href="https://facebook.com/labandapets" target="_blank" class="social-btn">👤</a>
+          <a href="https://wa.me/573223289900" target="_blank" class="social-btn">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="#"
+              onclick="filterProducts('unicolor', document.querySelector('.filter-btn')); document.getElementById('productos').scrollIntoView()">Unicolor</a>
+          </li>
+          <li><a href="#"
+              onclick="filterProducts('estampado', document.querySelector('.filter-btn')); document.getElementById('productos').scrollIntoView()">Estampados</a>
+          </li>
+          <li><a href="#"
+              onclick="filterProducts('futbol', document.querySelector('.filter-btn')); document.getElementById('productos').scrollIntoView()">Fútbol
+              Colombia</a></li>
+          <li><a href="#"
+              onclick="filterProducts('heroes', document.querySelector('.filter-btn')); document.getElementById('productos').scrollIntoView()">Superhéroes</a>
+          </li>
+          <li><a href="#"
+              onclick="filterProducts('mundial', document.querySelector('.filter-btn')); document.getElementById('productos').scrollIntoView()">Mundial
+              2026</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Información</h4>
+        <ul>
+          <li><a href="#tallas">Guía de Tallas</a></li>
+          <li><a href="#como-comprar">¿Cómo comprar?</a></li>
+          <li><a href="#envios">Envíos y Pagos</a></li>
+          <li><a href="#envios">Garantía y Cambios</a></li>
+          <li><a href="https://instagram.com/labandapetss" target="_blank">@labandapetss</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 La Banda Pets · Peluditos con Estilo · Bogotá, Colombia 🇨🇴 · Síguenos en @labandapetss</p>
+    </div>
+  </footer>
+
+  <!-- CART MODAL -->
+  <div class="modal-overlay" id="cartModal" onclick="closeCartOnBg(event)">
+    <div class="cart-modal">
+      <div class="cart-header">
+        <h2>🛒 Tu Carrito</h2>
+        <button class="close-btn" onclick="closeCart()">✕</button>
+      </div>
+      <div id="cartItems">
+        <div class="cart-empty">
+          <span>🐾</span>
+          ¡Tu carrito está vacío!<br>
+          <small style="font-weight:600; color:#bbb;">Agrega las gorras que más te gusten</small>
+        </div>
+      </div>
+      <div class="cart-footer" id="cartFooter" style="display:none;">
+        <div class="cart-total">
+          <span class="cart-total-label">Total del pedido:</span>
+          <span class="cart-total-price" id="cartTotal">$0</span>
+        </div>
+        <button class="btn-checkout" onclick="checkout()">
+          💬 Pedir por WhatsApp
+        </button>
+        <p style="text-align:center; margin-top:0.8rem; color:#999; font-size:0.8rem; font-weight:600;">
+          Te redirigiremos a WhatsApp para finalizar tu pedido 🐾
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/573223289900?text=Hola!%20Vi%20su%20catálogo%20y%20quiero%20pedir%20una%20gorrita%20para%20mi%20mascota%20🐾"
+    target="_blank" class="whatsapp-btn" title="Escríbenos por WhatsApp">💬</a>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">✅ ¡Agregado al carrito!</div>
+
+  <script>
+    let cart = [];
+
+    function selectSize(btn) {
+      const parent = btn.closest('.size-selector');
+      parent.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    }
+
+    function getSelectedSize(btn) {
+      const card = btn.closest('.product-card');
+      const selected = card.querySelector('.size-btn.selected');
+      return selected ? selected.textContent : 'XS';
+    }
+
+    function getPriceText(card) {
+      const priceEl = card.querySelector('.price');
+      return priceEl ? priceEl.textContent : '$0';
+    }
+
+    function priceToNum(str) {
+      return parseInt(str.replace(/[^0-9]/g, '')) || 0;
+    }
+
+    function addToCart(name, emoji, btn) {
+      const size = getSelectedSize(btn);
+      const card = btn.closest('.product-card');
+      const priceStr = getPriceText(card);
+      const price = priceToNum(priceStr);
+
+      cart.push({ name, emoji, size, price, priceStr });
+      updateCartUI();
+      showToast(`¡${emoji} ${name} (${size}) agregado!`);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = cart.length;
+      document.getElementById('cartCount').textContent = count;
+
+      const itemsEl = document.getElementById('cartItems');
+      const footerEl = document.getElementById('cartFooter');
+
+      if (count === 0) {
+        itemsEl.innerHTML = `<div class="cart-empty"><span>🐾</span>¡Tu carrito está vacío!<br><small style="font-weight:600; color:#bbb;">Agrega las gorras que más te gusten</small></div>`;
+        footerEl.style.display = 'none';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+      cart.forEach((item, i) => {
+        total += item.price;
+        html += `
+        <div class="cart-item">
+          <div class="cart-item-emoji">${item.emoji}</div>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-detail">Talla: ${item.size}</div>
+          </div>
+          <div class="cart-item-price">${item.priceStr}</div>
+          <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
+        </div>
+      `;
+      });
+
+      itemsEl.innerHTML = html;
+      footerEl.style.display = 'block';
+      document.getElementById('cartTotal').textContent = total > 0 ? '$' + total.toLocaleString('es-CO') : 'Consultar';
+    }
+
+    function openCart() {
+      document.getElementById('cartModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      document.getElementById('cartModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeCartOnBg(e) {
+      if (e.target === document.getElementById('cartModal')) closeCart();
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = '✅ ' + msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function checkout() {
+      if (cart.length === 0) return;
+      let msg = 'Hola! Quiero hacer un pedido de La Banda Pets 🐾\n\n';
+      cart.forEach((item, i) => {
+        msg += `${i + 1}. ${item.emoji} ${item.name} – Talla ${item.size} – ${item.priceStr}\n`;
+      });
+      msg += '\nPor favor indíquenme los detalles de pago y envío. ¡Gracias!';
+      const url = 'https://wa.me/573223289900?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank');
+    }
+
+    function filterProducts(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
