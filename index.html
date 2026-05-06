@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -718,6 +717,279 @@
       align-items: center;
       gap: 10px;
       transition: var(--transition);
+    }
+
+    /* WOMPI PAYMENT BUTTON */
+    .wompi-section {
+      margin-top: 1rem;
+    }
+
+    .wompi-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 1rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .wompi-divider::before,
+    .wompi-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #E5E7EB;
+    }
+
+    .wompi-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #00C853 0%, #00897B 100%);
+      color: white;
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: var(--btn-radius);
+      font-size: 1.05rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+      box-shadow: 0 6px 20px rgba(0, 200, 83, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wompi-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .wompi-btn:hover::before {
+      left: 100%;
+    }
+
+    .wompi-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0, 200, 83, 0.45);
+    }
+
+    .wompi-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .wompi-logo {
+      font-size: 1.1rem;
+      font-weight: 900;
+      background: white;
+      color: #00897B;
+      padding: 2px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .wompi-secure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+
+    .wompi-secure svg {
+      width: 12px;
+      height: 12px;
+      fill: #6B7280;
+    }
+
+    /* WOMPI MODAL */
+    .wompi-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(6px);
+      display: none;
+      z-index: 5000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .wompi-modal-overlay.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .wompi-modal {
+      background: white;
+      border-radius: 24px;
+      padding: 2.5rem;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .wompi-modal-header {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .wompi-modal-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #00C853, #00897B);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.8rem;
+    }
+
+    .wompi-modal-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.8rem;
+      color: var(--brand-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .wompi-modal-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .wompi-order-summary {
+      background: #F9FAFB;
+      border-radius: 16px;
+      padding: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .wompi-order-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.3rem 0;
+      color: var(--text-muted);
+    }
+
+    .wompi-order-total {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      color: var(--brand-dark);
+      border-top: 2px dashed #E5E7EB;
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+    }
+
+    .wompi-order-total span:last-child {
+      color: var(--brand-orange);
+    }
+
+    .wompi-form-field {
+      margin-bottom: 1rem;
+    }
+
+    .wompi-form-field label {
+      display: block;
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
+    .wompi-form-field input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid #E5E7EB;
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      outline: none;
+      transition: var(--transition);
+      color: var(--text-main);
+    }
+
+    .wompi-form-field input:focus {
+      border-color: #00897B;
+      box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.1);
+    }
+
+    .wompi-pay-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #00C853 0%, #00897B 100%);
+      color: white;
+      padding: 1.1rem;
+      border: none;
+      border-radius: var(--btn-radius);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 6px 20px rgba(0, 200, 83, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .wompi-pay-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0, 200, 83, 0.45);
+    }
+
+    .wompi-close-modal {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: #F3F4F6;
+      border: none;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+
+    .wompi-badges {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .wompi-badge {
+      background: #F3F4F6;
+      color: var(--text-muted);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* TOAST */
@@ -1802,8 +2074,58 @@
       <button class="checkout-btn" onclick="checkoutWhatsApp()">
         Comprar por WhatsApp
       </button>
+
+      <!-- WOMPI DIVIDER + BUTTON -->
+      <div class="wompi-section">
+        <div class="wompi-divider">o paga en línea</div>
+        <button class="wompi-btn" id="wompiBtn" onclick="openWompiModal()">
+          <span class="wompi-logo">Wompi</span>
+          Pagar con tarjeta o PSE
+        </button>
+        <div class="wompi-secure">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93C9.33 17.79 7 14.5 7 11V7.18L12 5z"/></svg>
+          Pago 100% seguro · Encriptado SSL
+        </div>
+      </div>
     </div>
   </aside>
+
+  <!-- WOMPI PAYMENT MODAL -->
+  <div class="wompi-modal-overlay" id="wompiModalOverlay">
+    <div class="wompi-modal">
+      <button class="wompi-close-modal" onclick="closeWompiModal()">×</button>
+
+      <div class="wompi-modal-header">
+        <div class="wompi-modal-icon">💳</div>
+        <h2 class="wompi-modal-title">Pagar con Wompi</h2>
+        <p class="wompi-modal-sub">Ingresa tu email para continuar</p>
+      </div>
+
+      <!-- Resumen del pedido -->
+      <div class="wompi-order-summary" id="wompiOrderSummary">
+        <!-- Se llena por JS -->
+      </div>
+
+      <!-- Campo de email -->
+      <div class="wompi-form-field">
+        <label for="wompiEmail">📧 Correo electrónico</label>
+        <input type="email" id="wompiEmail" placeholder="tucorreo@ejemplo.com" />
+      </div>
+
+      <!-- Botón que lanza el widget de Wompi -->
+      <button class="wompi-pay-btn" id="wompiLaunchBtn" onclick="launchWompiWidget()">
+        💳 Ir a pagar de forma segura
+      </button>
+
+      <div class="wompi-badges">
+        <span class="wompi-badge">🔒 SSL</span>
+        <span class="wompi-badge">🏦 PSE</span>
+        <span class="wompi-badge">💳 Tarjetas</span>
+        <span class="wompi-badge">📱 Nequi</span>
+        <span class="wompi-badge">🏪 Efecty</span>
+      </div>
+    </div>
+  </div>
 
   <div class="toast" id="toast">✅ ¡Agregado al carrito!</div>
   <div class="toast" id="toast-error" style="background:#EF4444;">⚠️ Por favor selecciona una talla</div>
@@ -2048,6 +2370,92 @@
       mensaje += `%0A*Total a pagar: $${total.toLocaleString('es-CO')}*`;
       window.open(`https://wa.me/573000000000?text=${mensaje}`, '_blank');
     }
+    // --- WOMPI PAYMENT LOGIC ---
+    const WOMPI_PUBLIC_KEY = 'pub_test_tZ6dDd8E2kx8wyfZwVdTXpgMcRuSLHqb';
+
+    function openWompiModal() {
+      if (cart.length === 0) {
+        alert("Agrega gorras antes de pagar.");
+        return;
+      }
+
+      // Render order summary
+      const summary = document.getElementById('wompiOrderSummary');
+      let total = 0;
+      let html = '';
+      cart.forEach(item => {
+        total += item.price;
+        html += `<div class="wompi-order-item"><span>${item.name} (Talla ${item.size})</span><span>$${item.price.toLocaleString('es-CO')}</span></div>`;
+      });
+      html += `<div class="wompi-order-total"><span>Total a pagar</span><span>$${total.toLocaleString('es-CO')}</span></div>`;
+      summary.innerHTML = html;
+
+      document.getElementById('wompiModalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeWompiModal() {
+      document.getElementById('wompiModalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('wompiModalOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeWompiModal();
+    });
+
+    function generateReference() {
+      return 'LBP-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+    }
+
+    function launchWompiWidget() {
+      const email = document.getElementById('wompiEmail').value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('wompiEmail').focus();
+        document.getElementById('wompiEmail').style.borderColor = '#EF4444';
+        setTimeout(() => { document.getElementById('wompiEmail').style.borderColor = '#E5E7EB'; }, 2000);
+        return;
+      }
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      const amountInCents = total * 100; // Wompi usa centavos
+      const reference = generateReference();
+
+      closeWompiModal();
+
+      // Crear y enviar formulario de Wompi (checkout hosted)
+      const form = document.createElement('form');
+      form.method = 'GET';
+      form.action = 'https://checkout.wompi.co/p/';
+      form.target = '_blank';
+
+      const fields = {
+        'public-key': WOMPI_PUBLIC_KEY,
+        'currency': 'COP',
+        'amount-in-cents': amountInCents,
+        'reference': reference,
+        'customer-data:email': email,
+        'redirect-url': window.location.href,
+      };
+
+      Object.entries(fields).forEach(([key, val]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = val;
+        form.appendChild(input);
+      });
+
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+
+      // Toast de confirmación
+      const t = document.getElementById('toast');
+      t.innerHTML = '🔒 Redirigiendo a Wompi...';
+      t.classList.add('show');
+      setTimeout(() => { t.classList.remove('show'); t.innerHTML = '✅ ¡Agregado al carrito!'; }, 3500);
+    }
+
   </script>
 </body>
 
