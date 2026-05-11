@@ -2,2200 +2,1885 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Banda Pets | Catálogo</title>
-  <link rel="icon" type="image/png" href="img/logo_ventana.png">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --brand-yellow: #FFD700;
-      --brand-orange: #FF6B1A;
-      --brand-blue: #2D4EC7;
-      --brand-dark: #1A1A2E;
-      --bg-light: #F9FAFB;
-      --text-main: #1F2937;
-      --text-muted: #6B7280;
-      --card-radius: 16px;
-      --btn-radius: 50px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-
-      /* ORIGINAL VARIABLES FOR EXTRACTED SECTIONS */
-      --yellow: #FFD700;
-      --orange: #FF6B1A;
-      --blue: #2D4EC7;
-      --purple: #7C3AED;
-      --pink: #FF4E9F;
-      --dark: #1A1A2E;
-      --light: #FFF9F0;
-      --radius: 20px;
-      --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--bg-light);
-      color: var(--text-main);
-      overflow-x: hidden;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: 'Fredoka One', cursive;
-      font-weight: normal;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid #F3F4F6;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 2rem;
-      z-index: 1000;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      font-size: 1.5rem;
-      color: var(--brand-blue);
-      font-family: 'Fredoka One', cursive;
-    }
-
-    .nav-brand span {
-      color: var(--brand-orange);
-    }
-
-    .nav-brand img {
-      height: 40px;
-    }
-
-    .cart-btn {
-      background: var(--brand-orange);
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: var(--btn-radius);
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-      box-shadow: 0 4px 14px rgba(255, 107, 26, 0.3);
-    }
-
-    .cart-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 107, 26, 0.4);
-    }
-
-    .cart-badge {
-      background: var(--brand-yellow);
-      color: var(--brand-dark);
-      border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 900;
-    }
-
-    /* HERO */
-    .hero {
-      margin-top: 70px;
-      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-blue) 100%);
-      padding: 4rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50vh;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-container {
-      max-width: 1200px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      z-index: 2;
-    }
-
-    .hero-text h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      color: white;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero-text h1 span {
-      color: var(--brand-yellow);
-    }
-
-    .hero-text p {
-      font-size: 1.2rem;
-      color: #E5E7EB;
-      margin-bottom: 2rem;
-      font-weight: 600;
-      line-height: 1.6;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--brand-yellow);
-      color: var(--brand-dark);
-      padding: 1rem 2.5rem;
-      border-radius: var(--btn-radius);
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1.2rem;
-      text-decoration: none;
-      transition: var(--transition);
-      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-    }
-
-    .hero-image {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-img {
-      width: 100%;
-      max-width: 450px;
-      border-radius: 24px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      transform: rotate(3deg);
-      transition: var(--transition);
-      background: white;
-    }
-
-    .floating-badge {
-      position: absolute;
-      top: 20px;
-      right: 0;
-      background: var(--brand-orange);
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      font-weight: 800;
-      font-family: 'Fredoka One';
-      box-shadow: var(--shadow-lg);
-      transform: rotate(15deg);
-    }
-
-    /* BENEFITS */
-    .benefits {
-      background: white;
-      padding: 2rem;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-      z-index: 10;
-    }
-
-    .benefits-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      text-align: center;
-    }
-
-    .benefit-icon {
-      font-size: 2rem;
-      margin: 0 auto 10px;
-      width: 60px;
-      height: 60px;
-      background: #FEF3C7;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--brand-orange);
-    }
-
-    .benefit-item h3 {
-      font-size: 1.1rem;
-      color: var(--brand-dark);
-    }
-
-    .benefit-item p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    /* COLLECTION */
-    .collection {
-      padding: 5rem 2rem;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--brand-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    /* FILTERS */
-    .filter-tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 3rem;
-    }
-
-    .filter-btn {
-      background: white;
-      border: 2px solid transparent;
-      padding: 0.6rem 1.5rem;
-      border-radius: var(--btn-radius);
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .filter-btn.active {
-      background: var(--brand-blue);
-      color: white;
-      border-color: var(--brand-blue);
-      box-shadow: 0 4px 10px rgba(45, 78, 199, 0.3);
-    }
-
-    /* PRODUCT GRID */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .product-card {
-      background: white;
-      border-radius: var(--card-radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      border: 1px solid #F3F4F6;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-      border-color: #E5E7EB;
-    }
-
-    .product-img-wrap {
-      background: #F9FAFB;
-      aspect-ratio: 1/1;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .product-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 10px;
-      transition: transform 0.5s ease;
-    }
-
-    .product-card:hover .product-img-wrap img {
-      transform: scale(1.08);
-    }
-
-    .product-info {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .product-category {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 0.3rem;
-    }
-
-    .product-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.2rem;
-      margin-bottom: 0.8rem;
-      color: var(--brand-dark);
-    }
-
-    .price {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.4rem;
-      color: var(--brand-orange);
-      margin-bottom: 1rem;
-    }
-
-    .quick-view-btn {
-      width: 100%;
-      background: #F3F4F6;
-      color: var(--brand-dark);
-      padding: 0.8rem;
-      border: none;
-      border-radius: 12px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      margin-top: auto;
-    }
-
-    .product-card:hover .quick-view-btn {
-      background: var(--brand-blue);
-      color: white;
-    }
-
-    /* PRODUCT MODAL */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(5px);
-      display: none;
-      z-index: 3000;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    .product-modal {
-      background: white;
-      width: 100%;
-      max-width: 900px;
-      border-radius: 24px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      max-height: 90vh;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: #F3F4F6;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-gallery {
-      background: #F9FAFB;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-main-img {
-      width: 100%;
-      max-width: 400px;
-      aspect-ratio: 1/1;
-      object-fit: contain;
-      margin-bottom: 1rem;
-    }
-
-    .modal-thumbnails {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .modal-thumb {
-      width: 60px;
-      height: 60px;
-      border: 2px solid transparent;
-      border-radius: 8px;
-      cursor: pointer;
-      object-fit: cover;
-      background: white;
-    }
-
-    .modal-thumb.active {
-      border-color: var(--brand-blue);
-    }
-
-    .modal-details {
-      padding: 3rem 2rem;
-      overflow-y: auto;
-    }
-
-    .modal-cat {
-      color: var(--text-muted);
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: 0.85rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: 2rem;
-      color: var(--brand-dark);
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    .modal-price {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.8rem;
-      color: var(--brand-orange);
-      margin-bottom: 2rem;
-    }
-
-    .size-selector-wrap {
-      margin-bottom: 2rem;
-    }
-
-    .size-selector-wrap h4 {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      margin-bottom: 0.8rem;
-      color: var(--text-main);
-    }
-
-    .sizes-grid {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .size-btn {
-      background: white;
-      border: 2px solid #E5E7EB;
-      border-radius: 8px;
-      padding: 0.8rem 1.2rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      color: var(--text-main);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .size-btn:hover {
-      border-color: var(--brand-blue);
-    }
-
-    .size-btn.selected {
-      background: var(--brand-blue);
-      color: white;
-      border-color: var(--brand-blue);
-    }
-
-    .modal-add-btn {
-      width: 100%;
-      background: var(--brand-orange);
-      color: white;
-      padding: 1.2rem;
-      border: none;
-      border-radius: var(--btn-radius);
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 4px 14px rgba(255, 107, 26, 0.3);
-    }
-
-    .modal-add-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(255, 107, 26, 0.4);
-    }
-
-    /* CART SIDEBAR */
-    .cart-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition);
-    }
-
-    .cart-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .cart-sidebar {
-      position: fixed;
-      top: 0;
-      right: -450px;
-      width: 100%;
-      max-width: 400px;
-      height: 100vh;
-      background: white;
-      z-index: 2001;
-      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      transition: right 0.4s ease;
-    }
-
-    .cart-overlay.active+.cart-sidebar {
-      right: 0;
-    }
-
-    .cart-header {
-      padding: 1.5rem;
-      border-bottom: 1px solid #E5E7EB;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cart-body {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 1.5rem;
-    }
-
-    .cart-item {
-      display: flex;
-      gap: 1rem;
-      border-bottom: 1px solid #F3F4F6;
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .cart-item-img {
-      width: 70px;
-      height: 70px;
-      border-radius: 8px;
-      object-fit: cover;
-      background: #F9FAFB;
-    }
-
-    .cart-item-info {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .cart-item-title {
-      font-weight: 800;
-      font-size: 0.95rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .cart-item-size {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-bottom: 0.2rem;
-    }
-
-    .cart-item-price {
-      color: var(--brand-orange);
-      font-weight: 700;
-    }
-
-    .remove-item {
-      background: none;
-      border: none;
-      color: #EF4444;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: underline;
-      margin-top: 0.2rem;
-      align-self: flex-start;
-    }
-
-    .cart-footer {
-      padding: 1.5rem;
-      border-top: 1px solid #E5E7EB;
-      background: #F9FAFB;
-    }
-
-    .cart-total {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.3rem;
-    }
-
-    .checkout-btn {
-      width: 100%;
-      background: #25D366;
-      color: white;
-      padding: 1rem;
-      border: none;
-      border-radius: var(--btn-radius);
-      font-size: 1.1rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      transition: var(--transition);
-    }
-
-    /* WOMPI PAYMENT BUTTON */
-    .wompi-section {
-      margin-top: 1rem;
-    }
-
-    .wompi-divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 1rem 0;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-
-    .wompi-divider::before,
-    .wompi-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #E5E7EB;
-    }
-
-    .wompi-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #00C853 0%, #00897B 100%);
-      color: white;
-      padding: 1rem 1.5rem;
-      border: none;
-      border-radius: var(--btn-radius);
-      font-size: 1.05rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      transition: var(--transition);
-      box-shadow: 0 6px 20px rgba(0, 200, 83, 0.35);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .wompi-btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .wompi-btn:hover::before {
-      left: 100%;
-    }
-
-    .wompi-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0, 200, 83, 0.45);
-    }
-
-    .wompi-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .wompi-logo {
-      font-size: 1.1rem;
-      font-weight: 900;
-      background: white;
-      color: #00897B;
-      padding: 2px 8px;
-      border-radius: 6px;
-      letter-spacing: 0.5px;
-    }
-
-    .wompi-secure {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-      font-weight: 600;
-    }
-
-    .wompi-secure svg {
-      width: 12px;
-      height: 12px;
-      fill: #6B7280;
-    }
-
-    /* WOMPI MODAL */
-    .wompi-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-      backdrop-filter: blur(6px);
-      display: none;
-      z-index: 5000;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    .wompi-modal-overlay.active {
-      display: flex;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .wompi-modal {
-      background: white;
-      border-radius: 24px;
-      padding: 2.5rem;
-      max-width: 460px;
-      width: 100%;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-      position: relative;
-    }
-
-    .wompi-modal-header {
-      text-align: center;
-      margin-bottom: 1.8rem;
-    }
-
-    .wompi-modal-icon {
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, #00C853, #00897B);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      font-size: 1.8rem;
-    }
-
-    .wompi-modal-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.8rem;
-      color: var(--brand-dark);
-      margin-bottom: 0.3rem;
-    }
-
-    .wompi-modal-sub {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .wompi-order-summary {
-      background: #F9FAFB;
-      border-radius: 16px;
-      padding: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .wompi-order-item {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      font-weight: 700;
-      padding: 0.3rem 0;
-      color: var(--text-muted);
-    }
-
-    .wompi-order-total {
-      display: flex;
-      justify-content: space-between;
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.3rem;
-      color: var(--brand-dark);
-      border-top: 2px dashed #E5E7EB;
-      margin-top: 0.8rem;
-      padding-top: 0.8rem;
-    }
-
-    .wompi-order-total span:last-child {
-      color: var(--brand-orange);
-    }
-
-    .wompi-form-field {
-      margin-bottom: 1rem;
-    }
-
-    .wompi-form-field label {
-      display: block;
-      font-weight: 800;
-      font-size: 0.85rem;
-      margin-bottom: 0.4rem;
-      color: var(--text-main);
-    }
-
-    .wompi-form-field input {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 2px solid #E5E7EB;
-      border-radius: 12px;
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      outline: none;
-      transition: var(--transition);
-      color: var(--text-main);
-    }
-
-    .wompi-form-field input:focus {
-      border-color: #00897B;
-      box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.1);
-    }
-
-    .wompi-pay-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #00C853 0%, #00897B 100%);
-      color: white;
-      padding: 1.1rem;
-      border: none;
-      border-radius: var(--btn-radius);
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1.15rem;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 6px 20px rgba(0, 200, 83, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .wompi-pay-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0, 200, 83, 0.45);
-    }
-
-    .wompi-close-modal {
-      position: absolute;
-      top: 1rem; right: 1rem;
-      background: #F3F4F6;
-      border: none;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      font-size: 1.3rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-    }
-
-    .wompi-badges {
-      display: flex;
-      justify-content: center;
-      gap: 0.8rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .wompi-badge {
-      background: #F3F4F6;
-      color: var(--text-muted);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    /* TOAST */
-    .toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: #111827;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      opacity: 0;
-      transition: var(--transition);
-      z-index: 3500;
-    }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-
-    @media (max-width: 768px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .product-modal {
-        grid-template-columns: 1fr;
-        overflow-y: auto;
-        max-height: 100vh;
-        border-radius: 0;
-      }
-
-      .modal-gallery {
-        padding: 1rem;
-      }
-
-      .modal-details {
-        padding: 1.5rem;
-      }
-    }
-
-    /* SECTIONS GLOBAL */
-    section {
-      padding: 5rem 2rem;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-tag {
-      display: inline-block;
-      background: var(--orange);
-      color: white;
-      padding: 0.3rem 1rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-
-    .section-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-subtitle {
-      color: #666;
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    /* SIZE GUIDE */
-    .size-section {
-      background: linear-gradient(135deg, #1A1A2E, #2D4EC7);
-      color: white;
-    }
-
-    .size-section .section-title {
-      color: white;
-    }
-
-    .size-section .section-subtitle {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .size-content {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .size-table-wrap {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .size-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .size-table th {
-      background: var(--yellow);
-      color: var(--dark);
-      padding: 0.8rem 1rem;
-      text-align: center;
-      font-weight: 900;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .size-table td {
-      padding: 0.9rem 1rem;
-      text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-weight: 700;
-      color: white;
-    }
-
-    .size-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .size-table tr:hover td {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .size-label {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.1rem;
-      color: var(--yellow);
-    }
-
-    .breeds-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .breed-group {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 1rem 1.2rem;
-      border: 2px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .breed-group-title {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.1rem;
-      color: var(--yellow);
-      margin-bottom: 0.6rem;
-    }
-
-    .breed-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .breed-tag {
-      background: rgba(255, 255, 255, 0.12);
-      color: rgba(255, 255, 255, 0.9);
-      padding: 0.2rem 0.7rem;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
-    /* HOW IT WORKS */
-    .how-section {
-      background: white;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .step-card {
-      text-align: center;
-      padding: 2rem 1.5rem;
-      border-radius: var(--radius);
-      transition: transform 0.3s;
-    }
-
-    .step-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .step-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      border: 4px solid var(--dark);
-    }
-
-    .step-num {
-      font-family: 'Fredoka One', cursive;
-      font-size: 0.9rem;
-      color: var(--orange);
-      margin-bottom: 0.3rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .step-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .step-desc {
-      color: #666;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      font-weight: 600;
-    }
-
-    /* SHIPPING */
-    .shipping-section {
-      background: linear-gradient(135deg, #FFF9F0, #FFE8CC);
-    }
-
-    .shipping-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .info-card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 1.8rem;
-      box-shadow: var(--shadow);
-      border-top: 5px solid var(--orange);
-    }
-
-    .info-card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .info-card-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-      color: var(--dark);
-    }
-
-    .info-card ul {
-      list-style: none;
-    }
-
-    .info-card ul li {
-      padding: 0.4rem 0;
-      color: #555;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-
-    .info-card ul li::before {
-      content: "✓";
-      color: var(--orange);
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-
-    /* CART MODAL */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-overlay.open {
-      display: flex;
-    }
-
-    .cart-modal {
-      background: white;
-      border-radius: 24px;
-      width: 90%;
-      max-width: 500px;
-      max-height: 80vh;
-      overflow-y: auto;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
-      animation: slide-up 0.3s ease;
-    }
-
-    @keyframes slide-up {
-      from {
-        transform: translateY(40px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .cart-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 1.8rem;
-      border-bottom: 2px solid #f0f0f0;
-      position: sticky;
-      top: 0;
-      background: white;
-      z-index: 1;
-    }
-
-    .cart-header h2 {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.5rem;
-    }
-
-    .close-btn {
-      background: #f0f0f0;
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-
-    .close-btn:hover {
-      background: #e0e0e0;
-    }
-
-    .cart-empty {
-      text-align: center;
-      padding: 3rem;
-      font-size: 1.1rem;
-      color: #999;
-      font-weight: 700;
-    }
-
-    .cart-empty span {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 1rem;
-    }
-
-    .cart-item {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      padding: 1rem 1.8rem;
-      border-bottom: 1px solid #f5f5f5;
-    }
-
-    .cart-item-emoji {
-      font-size: 2.5rem;
-    }
-
-    .cart-item-info {
-      flex: 1;
-    }
-
-    .cart-item-name {
-      font-weight: 800;
-      font-size: 0.95rem;
-    }
-
-    .cart-item-detail {
-      color: #999;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-top: 0.2rem;
-    }
-
-    .cart-item-price {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.1rem;
-      color: var(--orange);
-    }
-
-    .cart-item-remove {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #ccc;
-      font-size: 1.2rem;
-      transition: color 0.2s;
-    }
-
-    .cart-item-remove:hover {
-      color: #ff4444;
-    }
-
-    .cart-footer {
-      padding: 1.5rem 1.8rem;
-      border-top: 2px solid #f0f0f0;
-    }
-
-    .cart-total {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.2rem;
-    }
-
-    .cart-total-label {
-      font-weight: 800;
-      font-size: 1rem;
-    }
-
-    .cart-total-price {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.6rem;
-      color: var(--orange);
-    }
-
-    .btn-checkout {
-      width: 100%;
-      background: var(--orange);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      padding: 1rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .btn-checkout:hover {
-      background: var(--purple);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
-    }
-
-    /* SIZE SELECTOR IN CARD */
-    .size-selector {
-      display: flex;
-      gap: 0.4rem;
-      margin-bottom: 0.8rem;
-      flex-wrap: wrap;
-    }
-
-    .size-btn {
-      padding: 0.3rem 0.7rem;
-      border-radius: 8px;
-      border: 2px solid #e0e0e0;
-      background: white;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 0.78rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .size-btn:hover,
-    .size-btn.selected {
-      border-color: var(--blue);
-      background: var(--blue);
-      color: white;
-    }
-
-    /* WHATSAPP FLOAT */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 999;
-      background: #25D366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      text-decoration: none;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: bounce 3s ease-in-out infinite;
-    }
-
-    .whatsapp-btn:hover {
-      transform: scale(1.1) translateY(-4px);
-      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
-      animation: none;
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    /* TOAST */
-    .toast {
-      position: fixed;
-      bottom: 6rem;
-      right: 2rem;
-      z-index: 3000;
-      background: var(--dark);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--dark);
-      color: white;
-      padding: 4rem 2rem 2rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto 3rem;
-    }
-
-    .footer-brand .nav-logo {
-      margin-bottom: 1rem;
-    }
-
-    .footer-brand p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      font-weight: 600;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 0.8rem;
-      margin-top: 1.2rem;
-    }
-
-    .social-btn {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: background 0.2s;
-    }
-
-    .social-btn:hover {
-      background: var(--orange);
-    }
-
-    .footer-col h4 {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: var(--yellow);
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 0.6rem;
-    }
-
-    .footer-col ul li a {
-      color: rgba(255, 255, 255, 0.6);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-
-    .footer-col ul li a:hover {
-      color: white;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 1.5rem;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* HIDDEN */
-    .hidden {
-      display: none !important;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-      }
-
-      .hero-cta {
-        justify-content: center;
-      }
-
-      .hero-badges {
-        justify-content: center;
-      }
-
-      .size-content {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      }
-    }
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Banda Pets | Catálogo</title>
+    <link rel="icon" type="image/png" href="img/logo_ventana.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --brand-yellow: #FFD700;
+            --brand-orange: #FF6B1A;
+            --brand-blue: #2D4EC7;
+            --brand-dark: #1A1A2E;
+            --bg-light: #F9FAFB;
+            --text-main: #1F2937;
+            --text-muted: #6B7280;
+            --card-radius: 16px;
+            --btn-radius: 50px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+            /* ORIGINAL VARIABLES FOR EXTRACTED SECTIONS */
+            --yellow: #FFD700;
+            --orange: #FF6B1A;
+            --blue: #2D4EC7;
+            --purple: #7C3AED;
+            --pink: #FF4E9F;
+            --dark: #1A1A2E;
+            --light: #FFF9F0;
+            --radius: 20px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Fredoka One', cursive;
+            font-weight: normal;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #F3F4F6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: var(--brand-blue);
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .nav-brand span {
+            color: var(--brand-orange);
+        }
+
+        .nav-brand img {
+            height: 40px;
+        }
+
+        .cart-btn {
+            background: var(--brand-orange);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--btn-radius);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(255, 107, 26, 0.3);
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 26, 0.4);
+        }
+
+        .cart-badge {
+            background: var(--brand-yellow);
+            color: var(--brand-dark);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 900;
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-blue) 100%);
+            padding: 4rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-text h1 span {
+            color: var(--brand-yellow);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #E5E7EB;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--brand-yellow);
+            color: var(--brand-dark);
+            padding: 1rem 2.5rem;
+            border-radius: var(--btn-radius);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 24px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            transform: rotate(3deg);
+            transition: var(--transition);
+            background: white;
+        }
+
+        .floating-badge {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            background: var(--brand-orange);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 800;
+            font-family: 'Fredoka One';
+            box-shadow: var(--shadow-lg);
+            transform: rotate(15deg);
+        }
+
+        /* BENEFITS */
+        .benefits {
+            background: white;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            z-index: 10;
+        }
+
+        .benefits-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            margin: 0 auto 10px;
+            width: 60px;
+            height: 60px;
+            background: #FEF3C7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brand-orange);
+        }
+
+        .benefit-item h3 {
+            font-size: 1.1rem;
+            color: var(--brand-dark);
+        }
+
+        .benefit-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* COLLECTION */
+        .collection {
+            padding: 5rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--brand-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* FILTERS */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid transparent;
+            padding: 0.6rem 1.5rem;
+            border-radius: var(--btn-radius);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-btn.active {
+            background: var(--brand-blue);
+            color: white;
+            border-color: var(--brand-blue);
+            box-shadow: 0 4px 10px rgba(45, 78, 199, 0.3);
+        }
+
+        /* PRODUCT GRID */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid #F3F4F6;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: #E5E7EB;
+        }
+
+        .product-img-wrap {
+            background: #F9FAFB;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .product-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--brand-dark);
+        }
+
+        .price {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.4rem;
+            color: var(--brand-orange);
+            margin-bottom: 1rem;
+        }
+
+        .quick-view-btn {
+            width: 100%;
+            background: #F3F4F6;
+            color: var(--brand-dark);
+            padding: 0.8rem;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .product-card:hover .quick-view-btn {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        /* PRODUCT MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: none;
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .product-modal {
+            background: white;
+            width: 100%;
+            max-width: 900px;
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            max-height: 90vh;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #F3F4F6;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-gallery {
+            background: #F9FAFB;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-main-img {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .modal-thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .modal-thumb {
+            width: 60px;
+            height: 60px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            object-fit: cover;
+            background: white;
+        }
+
+        .modal-thumb.active {
+            border-color: var(--brand-blue);
+        }
+
+        .modal-details {
+            padding: 3rem 2rem;
+            overflow-y: auto;
+        }
+
+        .modal-cat {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .modal-price {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8rem;
+            color: var(--brand-orange);
+            margin-bottom: 2rem;
+        }
+
+        .size-selector-wrap {
+            margin-bottom: 2rem;
+        }
+
+        .size-selector-wrap h4 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .sizes-grid {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .size-btn {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .size-btn:hover {
+            border-color: var(--brand-blue);
+        }
+
+        .size-btn.selected {
+            background: var(--brand-blue);
+            color: white;
+            border-color: var(--brand-blue);
+        }
+
+        .modal-add-btn {
+            width: 100%;
+            background: var(--brand-orange);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: var(--btn-radius);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(255, 107, 26, 0.3);
+        }
+
+        .modal-add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 26, 0.4);
+        }
+
+        /* CART SIDEBAR */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: white;
+            z-index: 2001;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: right 0.4s ease;
+        }
+
+        .cart-overlay.active+.cart-sidebar {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #E5E7EB;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 1px solid #F3F4F6;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: #F9FAFB;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cart-item-title {
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .cart-item-size {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .cart-item-price {
+            color: var(--brand-orange);
+            font-weight: 700;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #EF4444;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 0.2rem;
+            align-self: flex-start;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #E5E7EB;
+            background: #F9FAFB;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #25D366;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: var(--btn-radius);
+            font-size: 1.1rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #111827;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 3500;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .product-modal {
+                grid-template-columns: 1fr;
+                overflow-y: auto;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+
+            .modal-gallery {
+                padding: 1rem;
+            }
+
+            .modal-details {
+                padding: 1.5rem;
+            }
+        }
+
+        /* SECTIONS GLOBAL */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        /* SIZE GUIDE */
+        .size-section {
+            background: linear-gradient(135deg, #1A1A2E, #2D4EC7);
+            color: white;
+        }
+
+        .size-section .section-title {
+            color: white;
+        }
+
+        .size-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .size-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .size-table-wrap {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .size-table th {
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 0.8rem 1rem;
+            text-align: center;
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .size-table td {
+            padding: 0.9rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+            color: white;
+        }
+
+        .size-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .size-table tr:hover td {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .size-label {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            color: var(--yellow);
+        }
+
+        .breeds-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .breed-group {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .breed-group-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            color: var(--yellow);
+            margin-bottom: 0.6rem;
+        }
+
+        .breed-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .breed-tag {
+            background: rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 0.2rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        /* HOW IT WORKS */
+        .how-section {
+            background: white;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            transition: transform 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 4px solid var(--dark);
+        }
+
+        .step-num {
+            font-family: 'Fredoka One', cursive;
+            font-size: 0.9rem;
+            color: var(--orange);
+            margin-bottom: 0.3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .step-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        /* SHIPPING */
+        .shipping-section {
+            background: linear-gradient(135deg, #FFF9F0, #FFE8CC);
+        }
+
+        .shipping-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--orange);
+        }
+
+        .info-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card ul li {
+            padding: 0.4rem 0;
+            color: #555;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .info-card ul li::before {
+            content: "✓";
+            color: var(--orange);
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        /* CART MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .cart-modal {
+            background: white;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            animation: slide-up 0.3s ease;
+        }
+
+        @keyframes slide-up {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1;
+        }
+
+        .cart-header h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.5rem;
+        }
+
+        .close-btn {
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .close-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.1rem;
+            color: #999;
+            font-weight: 700;
+        }
+
+        .cart-empty span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem 1.8rem;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .cart-item-emoji {
+            font-size: 2.5rem;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .cart-item-detail {
+            color: #999;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+
+        .cart-item-price {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            color: var(--orange);
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+
+        .cart-item-remove:hover {
+            color: #ff4444;
+        }
+
+        .cart-footer {
+            padding: 1.5rem 1.8rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .cart-total-label {
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .cart-total-price {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.6rem;
+            color: var(--orange);
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: var(--orange);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-checkout:hover {
+            background: var(--purple);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        /* SIZE SELECTOR IN CARD */
+        .size-selector {
+            display: flex;
+            gap: 0.4rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .size-btn {
+            padding: 0.3rem 0.7rem;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .size-btn:hover,
+        .size-btn.selected {
+            border-color: var(--blue);
+            background: var(--blue);
+            color: white;
+        }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            z-index: 3000;
+            background: var(--dark);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand .nav-logo {
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+
+        .social-btn:hover {
+            background: var(--orange);
+        }
+
+        .footer-col h4 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--yellow);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* HIDDEN */
+        .hidden {
+            display: none !important;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-badges {
+                justify-content: center;
+            }
+
+            .size-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
     </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <a href="#" class="nav-brand">
-      <img src="img/logo.png" alt="Logo">
-      La Banda <span>Pets</span>
-    </a>
-    <button class="cart-btn" onclick="toggleCart()">
-      🛒 Ver Carrito
-      <span class="cart-badge" id="cart-count">0</span>
-    </button>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-container">
-      <div class="hero-text">
-        <h1>Viste a tu mascota de pasión y <span>estilo</span></h1>
-        <p>Descubre nuestra colección exclusiva de gorras hechas a mano. Elige entre diseños unicolor, estampados
-          divertidos o la Nueva Colección Mundial 2026.</p>
-        <a href="#productos" class="hero-cta">Ver Catálogo Completo</a>
-      </div>
-      <div class="hero-image">
-        <div class="floating-badge">¡Con Tallas!</div>
-        <img src="img/selecciones/colombia_1.jpeg" alt="Gorra Colombia" class="hero-img">
-      </div>
-    </div>
-  </section>
-
-  <!-- BENEFITS -->
-  <section class="benefits">
-    <div class="benefits-grid">
-      <div class="benefit-item">
-        <div class="benefit-icon">☀️</div>
-        <h3>Protección UV</h3>
-        <p>Cuida sus ojitos en días de sol</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">🧵</div>
-        <h3>Ajuste Perfecto</h3>
-        <p>Elásticos cómodos y en todas las tallas</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">🎨</div>
-        <h3>Múltiples Diseños</h3>
-        <p>Estampados, Selecciones y Unicolor</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">🚚</div>
-        <h3>Envíos Todo el País</h3>
-        <p>Llevamos tu pedido a la puerta de tu casa</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCT CATALOG -->
-  <section id="productos" class="collection">
-    <div class="section-header">
-      <h2 class="section-title">Elige su estilo</h2>
-    </div>
-
-    <!-- FILTERS -->
-    <div class="filter-tabs" id="filtersContainer">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="mundial">Mundial 2026</button>
-      <button class="filter-btn" data-filter="futbol">Fútbol Nacional</button>
-      <button class="filter-btn" data-filter="unicolor">Unicolor</button>
-      <button class="filter-btn" data-filter="estampado">Estampados</button>
-    </div>
-
-    <!-- GRID -->
-    <div class="product-grid" id="productGrid">
-      <!-- Inyectado por JS -->
-    </div>
-  </section>
-
-  <!-- SIZE GUIDE -->
-  <section class="size-section" id="tallas">
-    <div class="section-header">
-      <div class="section-tag" style="background: var(--yellow); color: var(--dark);">Medidas</div>
-      <h2 class="section-title">Guía de Tallas 📏</h2>
-      <p class="section-subtitle">Mide con cinta métrica la cabeza de tu peludito</p>
-    </div>
-
-    <div class="size-content">
-      <div>
-        <div class="size-table-wrap">
-          <table class="size-table">
-            <thead>
-              <tr>
-                <th>Talla</th>
-                <th>A) Largo Gorra</th>
-                <th>B) Circunferencia</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="size-label">XS</span></td>
-                <td>10.5 cm</td>
-                <td>25 – 31 cm</td>
-              </tr>
-              <tr>
-                <td><span class="size-label">S</span></td>
-                <td>13.5 cm</td>
-                <td>35 – 38 cm</td>
-              </tr>
-              <tr>
-                <td><span class="size-label">M</span></td>
-                <td>16 cm</td>
-                <td>42 – 48 cm</td>
-              </tr>
-              <tr>
-                <td><span class="size-label">L</span></td>
-                <td>17 cm</td>
-                <td>46 – 55 cm</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-top:1rem; font-weight:600; text-align:center;">
-          ⚠️ Nuestras tallas son propias. No son iguales a otros fabricantes.
-        </p>
-      </div>
-
-      <div class="breeds-list">
-        <div class="breed-group">
-          <div class="breed-group-title">🐾 XS – Mini pets</div>
-          <div class="breed-tags">
-            <span class="breed-tag">Gatos</span>
-            <span class="breed-tag">Pinscher</span>
-            <span class="breed-tag">Chihuahua</span>
-            <span class="breed-tag">Pomerania</span>
-            <span class="breed-tag">Mini Toy</span>
-            <span class="breed-tag">Yorkie mini</span>
-          </div>
-        </div>
-        <div class="breed-group">
-          <div class="breed-group-title">🐕 S – Pequeños</div>
-          <div class="breed-tags">
-            <span class="breed-tag">Schnauzer</span>
-            <span class="breed-tag">French Poodle</span>
-            <span class="breed-tag">Pekinés</span>
-            <span class="breed-tag">Pug</span>
-            <span class="breed-tag">Shih Tzu</span>
-            <span class="breed-tag">Westie</span>
-            <span class="breed-tag">Yorkie Terrier</span>
-          </div>
-        </div>
-        <div class="breed-group">
-          <div class="breed-group-title">🐶 M – Medianos</div>
-          <div class="breed-tags">
-            <span class="breed-tag">Beagle</span>
-            <span class="breed-tag">Boston Terrier</span>
-            <span class="breed-tag">Bulldog Francés</span>
-            <span class="breed-tag">Cocker Spaniel</span>
-            <span class="breed-tag">Criollos</span>
-          </div>
-        </div>
-        <div class="breed-group">
-          <div class="breed-group-title">🦮 L – Grandes</div>
-          <div class="breed-tags">
-            <span class="breed-tag">Bulldog Inglés</span>
-            <span class="breed-tag">Pastor Alemán</span>
-            <span class="breed-tag">Labrador</span>
-            <span class="breed-tag">Golden</span>
-            <span class="breed-tag">Lobo Siberiano</span>
-            <span class="breed-tag">Pitbull</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW TO BUY -->
-  <section class="how-section" id="como-comprar">
-    <div class="section-header">
-      <div class="section-tag">Proceso</div>
-      <h2 class="section-title">¿Cómo comprar? 🛒</h2>
-      <p class="section-subtitle">Fácil, rápido y con todo el amor del mundo</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-icon" style="background: #FFF0D6; border-color: var(--orange);">📏</div>
-        <div class="step-num">Paso 1</div>
-        <div class="step-title">Mide a tu peludo</div>
-        <div class="step-desc">Con cinta métrica, mide la circunferencia y el largo de la cabeza de tu mascota y elige
-          la talla.</div>
-      </div>
-      <div class="step-card">
-        <div class="step-icon" style="background: #E8EDFF; border-color: var(--blue);">🎨</div>
-        <div class="step-num">Paso 2</div>
-        <div class="step-title">Elige tu gorrita</div>
-        <div class="step-desc">Escoge el diseño, color y talla que más te guste para tu mejor amigo. ¡Hay para todos los
-          gustos!</div>
-      </div>
-      <div class="step-card">
-        <div class="step-icon" style="background: #E8FFE8; border-color: #25D366;">💬</div>
-        <div class="step-num">Paso 3</div>
-        <div class="step-title">Escríbenos</div>
-        <div class="step-desc">Contáctanos por WhatsApp con tu pedido y te daremos todos los detalles de pago y envío.
-        </div>
-      </div>
-      <div class="step-card">
-        <div class="step-icon" style="background: #FFE8F0; border-color: var(--pink);">💳</div>
-        <div class="step-num">Paso 4</div>
-        <div class="step-title">Paga fácil</div>
-        <div class="step-desc">Aceptamos Nequi, Daviplata y pago contraentrega en Bogotá. ¡Confirmado el pago, te
-          enviamos!</div>
-      </div>
-      <div class="step-card">
-        <div class="step-icon" style="background: #FFFDE8; border-color: var(--yellow);">📦</div>
-        <div class="step-num">Paso 5</div>
-        <div class="step-title">¡Recibe tu gorrita!</div>
-        <div class="step-desc">En Bogotá entre 1 y 3 días hábiles. A nivel nacional entre 3 y 6 días. ¡Tu peludito te lo
-          agradecerá!</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SHIPPING & INFO -->
-  <section class="shipping-section" id="envios">
-    <div class="section-header">
-      <div class="section-tag">Info importante</div>
-      <h2 class="section-title">Ten en Cuenta 📋</h2>
-      <p class="section-subtitle">Todo lo que necesitas saber antes de tu compra</p>
-    </div>
-    <div class="shipping-grid">
-      <div class="info-card">
-        <div class="info-card-icon">🚚</div>
-        <div class="info-card-title">Envíos</div>
-        <ul>
-          <li>Ubicados en Bogotá D.C.</li>
-          <li>Envío no incluido en el precio del producto</li>
-          <li>Envíos nacionales con Interrapidísimo y Envía</li>
-          <li>Bogotá: 1 a 3 días hábiles</li>
-          <li>Nacional: 3 a 6 días hábiles</li>
-          <li>Personalizados: tiempo extendido, se informa antes</li>
-        </ul>
-      </div>
-      <div class="info-card">
-        <div class="info-card-icon">💳</div>
-        <div class="info-card-title">Métodos de Pago</div>
-        <ul>
-          <li>Nequi</li>
-          <li>Daviplata</li>
-          <li>Contraentrega (solo Bogotá)</li>
-          <li>Gorrita se envía al confirmar el pago</li>
-        </ul>
-      </div>
-      <div class="info-card">
-        <div class="info-card-icon">🔄</div>
-        <div class="info-card-title">Garantía y Cambios</div>
-        <ul>
-          <li>Cambios por talla o referencia hasta 5 días después</li>
-          <li>Producto sin uso, buen estado y con etiqueta</li>
-          <li>No se hacen devoluciones de dinero</li>
-          <li>Envío del cambio corre por cuenta del cliente</li>
-        </ul>
-      </div>
-      <div class="info-card" style="border-top-color: var(--purple);">
-        <div class="info-card-icon">✨</div>
-        <div class="info-card-title">Personalizados</div>
-        <ul>
-          <li>Requieren pago anticipado del 100%</li>
-          <li>No se aceptan devoluciones ni cambios</li>
-          <li>El cliente aprueba el diseño antes de fabricar</li>
-          <li>¡Escríbenos para cotizar tu diseño único!</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#" class="nav-logo" style="color: white; margin-bottom: 1rem; display: flex;">
-          <img src="img/logo.png" alt="Logo La Banda Pets" style="height: 50px; width: auto;">
-          La Banda <span style="color: var(--orange);">Pets</span>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="nav-brand">
+            <img src="img/logo.png" alt="Logo">
+            La Banda <span>Pets</span>
         </a>
-        <p>Peluditos con estilo. Hacemos gorras para mascotas con amor, a mano, diseñadas especialmente para que tu
-          mejor amigo se vea increíble y esté protegido del sol. +2.000 familias confían en nosotros.</p>
-        <div class="footer-socials">
-          <a href="https://instagram.com/labandapetss" target="_blank" class="social-btn">📷</a>
-          <a href="https://facebook.com/labandapets" target="_blank" class="social-btn">👤</a>
-          <a href="https://wa.me/573223289900" target="_blank" class="social-btn">💬</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Categorías</h4>
-        <ul>
-          <li><a href="#"
-              onclick="document.querySelector('[data-filter=''unicolor'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Unicolor</a>
-          </li>
-          <li><a href="#"
-              onclick="document.querySelector('[data-filter=''estampado'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Estampados</a>
-          </li>
-          <li><a href="#"
-              onclick="document.querySelector('[data-filter=''futbol'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Fútbol
-              Colombia</a></li>
-          <li><a href="#"
-              onclick="document.querySelector('[data-filter=''all'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Superhéroes</a>
-          </li>
-          <li><a href="#"
-              onclick="document.querySelector('[data-filter=''mundial'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Mundial
-              2026</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Información</h4>
-        <ul>
-          <li><a href="#tallas">Guía de Tallas</a></li>
-          <li><a href="#como-comprar">¿Cómo comprar?</a></li>
-          <li><a href="#envios">Envíos y Pagos</a></li>
-          <li><a href="#envios">Garantía y Cambios</a></li>
-          <li><a href="https://instagram.com/labandapetss" target="_blank">@labandapetss</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 La Banda Pets · Peluditos con Estilo · Bogotá, Colombia 🇨🇴 · Síguenos en @labandapetss</p>
-    </div>
-  </footer>
-
-
-  <!-- WHATSAPP -->
-  <a href="https://wa.me/573223289900?text=Hola!%20Vi%20su%20catálogo%20y%20quiero%20pedir%20una%20gorrita%20para%20mi%20mascota%20🐾"
-    target="_blank" class="whatsapp-btn" title="Escríbenos por WhatsApp">💬</a>
-
-
-  <!-- PRODUCT MODAL (QUICK VIEW) -->
-  <div class="modal-overlay" id="productModalOverlay">
-    <div class="product-modal">
-      <button class="close-modal" onclick="closeModal()">&times;</button>
-
-      <div class="modal-gallery">
-        <img src="" alt="" class="modal-main-img" id="modalMainImg">
-        <div class="modal-thumbnails" id="modalThumbnails">
-          <!-- Inyectado por JS -->
-        </div>
-      </div>
-
-      <div class="modal-details">
-        <div class="modal-cat" id="modalCat">Categoría</div>
-        <h2 class="modal-title" id="modalTitle">Título del Producto</h2>
-        <div class="modal-price" id="modalPrice">$0</div>
-
-        <div class="size-selector-wrap">
-          <h4>Selecciona una Talla:</h4>
-          <div class="sizes-grid" id="modalSizes">
-            <button class="size-btn" onclick="selectSize('XS')">XS</button>
-            <button class="size-btn" onclick="selectSize('S')">S</button>
-            <button class="size-btn" onclick="selectSize('M')">M</button>
-            <button class="size-btn" onclick="selectSize('L')">L</button>
-          </div>
-        </div>
-
-        <button class="modal-add-btn" onclick="addToCartFromModal()">Añadir al Carrito</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- CART SIDEBAR -->
-  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-  <aside class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-      <h2>Tu Carrito 🛒</h2>
-      <button class="close-cart" onclick="toggleCart()"
-        style="border:none;background:none;font-size:1.5rem;cursor:pointer;">&times;</button>
-    </div>
-    <div class="cart-body" id="cartBody">
-      <!-- Inyectado por JS -->
-    </div>
-    <div class="cart-footer">
-      <div class="cart-total">
-        <span>Total:</span>
-        <span id="cartTotal">$0</span>
-      </div>
-      <button class="checkout-btn" onclick="checkoutWhatsApp()">
-        Comprar por WhatsApp
-      </button>
-
-      <!-- WOMPI DIVIDER + BUTTON -->
-      <div class="wompi-section">
-        <div class="wompi-divider">o paga en línea</div>
-        <button class="wompi-btn" id="wompiBtn" onclick="openWompiModal()">
-          <span class="wompi-logo">Wompi</span>
-          Pagar con tarjeta o PSE
+        <button class="cart-btn" onclick="toggleCart()">
+            🛒 Ver Carrito
+            <span class="cart-badge" id="cart-count">0</span>
         </button>
-        <div class="wompi-secure">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93C9.33 17.79 7 14.5 7 11V7.18L12 5z"/></svg>
-          Pago 100% seguro · Encriptado SSL
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Viste a tu mascota de pasión y <span>estilo</span></h1>
+                <p>Descubre nuestra colección exclusiva de gorras hechas a mano. Elige entre diseños unicolor,
+                    estampados
+                    divertidos o la Nueva Colección Mundial 2026.</p>
+                <a href="#productos" class="hero-cta">Ver Catálogo Completo</a>
+            </div>
+            <div class="hero-image">
+                <div class="floating-badge">¡Con Tallas!</div>
+                <img src="img/selecciones/colombia_1.jpeg" alt="Gorra Colombia" class="hero-img">
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="benefits">
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">☀️</div>
+                <h3>Protección UV</h3>
+                <p>Cuida sus ojitos en días de sol</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🧵</div>
+                <h3>Ajuste Perfecto</h3>
+                <p>Elásticos cómodos y en todas las tallas</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🎨</div>
+                <h3>Múltiples Diseños</h3>
+                <p>Estampados, Selecciones y Unicolor</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🚚</div>
+                <h3>Envíos Todo el País</h3>
+                <p>Llevamos tu pedido a la puerta de tu casa</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT CATALOG -->
+    <section id="productos" class="collection">
+        <div class="section-header">
+            <h2 class="section-title">Elige su estilo</h2>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="filter-tabs" id="filtersContainer">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="mundial">Mundial 2026</button>
+            <button class="filter-btn" data-filter="futbol">Fútbol Nacional</button>
+            <button class="filter-btn" data-filter="unicolor">Unicolor</button>
+            <button class="filter-btn" data-filter="estampado">Estampados</button>
+        </div>
+
+        <!-- GRID -->
+        <div class="product-grid" id="productGrid">
+            <!-- Inyectado por JS -->
+        </div>
+    </section>
+
+    <!-- SIZE GUIDE -->
+    <section class="size-section" id="tallas">
+        <div class="section-header">
+            <div class="section-tag" style="background: var(--yellow); color: var(--dark);">Medidas</div>
+            <h2 class="section-title">Guía de Tallas 📏</h2>
+            <p class="section-subtitle">Mide con cinta métrica la cabeza de tu peludito</p>
+        </div>
+
+        <div class="size-content">
+            <div>
+                <div class="size-table-wrap">
+                    <table class="size-table">
+                        <thead>
+                            <tr>
+                                <th>Talla</th>
+                                <th>A) Largo Gorra</th>
+                                <th>B) Circunferencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="size-label">XS</span></td>
+                                <td>10.5 cm</td>
+                                <td>25 – 31 cm</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-label">S</span></td>
+                                <td>13.5 cm</td>
+                                <td>35 – 38 cm</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-label">M</span></td>
+                                <td>16 cm</td>
+                                <td>42 – 48 cm</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-label">L</span></td>
+                                <td>17 cm</td>
+                                <td>46 – 55 cm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p
+                    style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-top:1rem; font-weight:600; text-align:center;">
+                    ⚠️ Nuestras tallas son propias. No son iguales a otros fabricantes.
+                </p>
+            </div>
+
+            <div class="breeds-list">
+                <div class="breed-group">
+                    <div class="breed-group-title">🐾 XS – Mini pets</div>
+                    <div class="breed-tags">
+                        <span class="breed-tag">Gatos</span>
+                        <span class="breed-tag">Pinscher</span>
+                        <span class="breed-tag">Chihuahua</span>
+                        <span class="breed-tag">Pomerania</span>
+                        <span class="breed-tag">Mini Toy</span>
+                        <span class="breed-tag">Yorkie mini</span>
+                    </div>
+                </div>
+                <div class="breed-group">
+                    <div class="breed-group-title">🐕 S – Pequeños</div>
+                    <div class="breed-tags">
+                        <span class="breed-tag">Schnauzer</span>
+                        <span class="breed-tag">French Poodle</span>
+                        <span class="breed-tag">Pekinés</span>
+                        <span class="breed-tag">Pug</span>
+                        <span class="breed-tag">Shih Tzu</span>
+                        <span class="breed-tag">Westie</span>
+                        <span class="breed-tag">Yorkie Terrier</span>
+                    </div>
+                </div>
+                <div class="breed-group">
+                    <div class="breed-group-title">🐶 M – Medianos</div>
+                    <div class="breed-tags">
+                        <span class="breed-tag">Beagle</span>
+                        <span class="breed-tag">Boston Terrier</span>
+                        <span class="breed-tag">Bulldog Francés</span>
+                        <span class="breed-tag">Cocker Spaniel</span>
+                        <span class="breed-tag">Criollos</span>
+                    </div>
+                </div>
+                <div class="breed-group">
+                    <div class="breed-group-title">🦮 L – Grandes</div>
+                    <div class="breed-tags">
+                        <span class="breed-tag">Bulldog Inglés</span>
+                        <span class="breed-tag">Pastor Alemán</span>
+                        <span class="breed-tag">Labrador</span>
+                        <span class="breed-tag">Golden</span>
+                        <span class="breed-tag">Lobo Siberiano</span>
+                        <span class="breed-tag">Pitbull</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section class="how-section" id="como-comprar">
+        <div class="section-header">
+            <div class="section-tag">Proceso</div>
+            <h2 class="section-title">¿Cómo comprar? 🛒</h2>
+            <p class="section-subtitle">Fácil, rápido y con todo el amor del mundo</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-icon" style="background: #FFF0D6; border-color: var(--orange);">📏</div>
+                <div class="step-num">Paso 1</div>
+                <div class="step-title">Mide a tu peludo</div>
+                <div class="step-desc">Con cinta métrica, mide la circunferencia y el largo de la cabeza de tu mascota y
+                    elige
+                    la talla.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-icon" style="background: #E8EDFF; border-color: var(--blue);">🎨</div>
+                <div class="step-num">Paso 2</div>
+                <div class="step-title">Elige tu gorrita</div>
+                <div class="step-desc">Escoge el diseño, color y talla que más te guste para tu mejor amigo. ¡Hay para
+                    todos los
+                    gustos!</div>
+            </div>
+            <div class="step-card">
+                <div class="step-icon" style="background: #E8FFE8; border-color: #25D366;">💬</div>
+                <div class="step-num">Paso 3</div>
+                <div class="step-title">Escríbenos</div>
+                <div class="step-desc">Contáctanos por WhatsApp con tu pedido y te daremos todos los detalles de pago y
+                    envío.
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-icon" style="background: #FFE8F0; border-color: var(--pink);">💳</div>
+                <div class="step-num">Paso 4</div>
+                <div class="step-title">Paga fácil</div>
+                <div class="step-desc">Aceptamos Nequi, Daviplata y pago contraentrega en Bogotá. ¡Confirmado el pago,
+                    te
+                    enviamos!</div>
+            </div>
+            <div class="step-card">
+                <div class="step-icon" style="background: #FFFDE8; border-color: var(--yellow);">📦</div>
+                <div class="step-num">Paso 5</div>
+                <div class="step-title">¡Recibe tu gorrita!</div>
+                <div class="step-desc">En Bogotá entre 1 y 3 días hábiles. A nivel nacional entre 3 y 6 días. ¡Tu
+                    peludito te lo
+                    agradecerá!</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHIPPING & INFO -->
+    <section class="shipping-section" id="envios">
+        <div class="section-header">
+            <div class="section-tag">Info importante</div>
+            <h2 class="section-title">Ten en Cuenta 📋</h2>
+            <p class="section-subtitle">Todo lo que necesitas saber antes de tu compra</p>
+        </div>
+        <div class="shipping-grid">
+            <div class="info-card">
+                <div class="info-card-icon">🚚</div>
+                <div class="info-card-title">Envíos</div>
+                <ul>
+                    <li>Ubicados en Bogotá D.C.</li>
+                    <li>Envío no incluido en el precio del producto</li>
+                    <li>Envíos nacionales con Interrapidísimo y Envía</li>
+                    <li>Bogotá: 1 a 3 días hábiles</li>
+                    <li>Nacional: 3 a 6 días hábiles</li>
+                    <li>Personalizados: tiempo extendido, se informa antes</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">💳</div>
+                <div class="info-card-title">Métodos de Pago</div>
+                <ul>
+                    <li>Nequi</li>
+                    <li>Daviplata</li>
+                    <li>Contraentrega (solo Bogotá)</li>
+                    <li>Gorrita se envía al confirmar el pago</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🔄</div>
+                <div class="info-card-title">Garantía y Cambios</div>
+                <ul>
+                    <li>Cambios por talla o referencia hasta 5 días después</li>
+                    <li>Producto sin uso, buen estado y con etiqueta</li>
+                    <li>No se hacen devoluciones de dinero</li>
+                    <li>Envío del cambio corre por cuenta del cliente</li>
+                </ul>
+            </div>
+            <div class="info-card" style="border-top-color: var(--purple);">
+                <div class="info-card-icon">✨</div>
+                <div class="info-card-title">Personalizados</div>
+                <ul>
+                    <li>Requieren pago anticipado del 100%</li>
+                    <li>No se aceptan devoluciones ni cambios</li>
+                    <li>El cliente aprueba el diseño antes de fabricar</li>
+                    <li>¡Escríbenos para cotizar tu diseño único!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo" style="color: white; margin-bottom: 1rem; display: flex;">
+                    <img src="img/logo.png" alt="Logo La Banda Pets" style="height: 50px; width: auto;">
+                    La Banda <span style="color: var(--orange);">Pets</span>
+                </a>
+                <p>Peluditos con estilo. Hacemos gorras para mascotas con amor, a mano, diseñadas especialmente para que
+                    tu
+                    mejor amigo se vea increíble y esté protegido del sol. +2.000 familias confían en nosotros.</p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/labandapetss" target="_blank" class="social-btn">📷</a>
+                    <a href="https://facebook.com/labandapets" target="_blank" class="social-btn">👤</a>
+                    <a href="https://wa.me/573223289900" target="_blank" class="social-btn">💬</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Categorías</h4>
+                <ul>
+                    <li><a href="#"
+                            onclick="document.querySelector('[data-filter=''unicolor'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Unicolor</a>
+                    </li>
+                    <li><a href="#"
+                            onclick="document.querySelector('[data-filter=''estampado'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Estampados</a>
+                    </li>
+                    <li><a href="#"
+                            onclick="document.querySelector('[data-filter=''futbol'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Fútbol
+                            Colombia</a></li>
+                    <li><a href="#"
+                            onclick="document.querySelector('[data-filter=''all'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Superhéroes</a>
+                    </li>
+                    <li><a href="#"
+                            onclick="document.querySelector('[data-filter=''mundial'']').click(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Mundial
+                            2026</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Información</h4>
+                <ul>
+                    <li><a href="#tallas">Guía de Tallas</a></li>
+                    <li><a href="#como-comprar">¿Cómo comprar?</a></li>
+                    <li><a href="#envios">Envíos y Pagos</a></li>
+                    <li><a href="#envios">Garantía y Cambios</a></li>
+                    <li><a href="https://instagram.com/labandapetss" target="_blank">@labandapetss</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 La Banda Pets · Peluditos con Estilo · Bogotá, Colombia 🇨🇴 · Síguenos en @labandapetss</p>
+        </div>
+    </footer>
+
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/573223289900?text=Hola!%20Vi%20su%20catálogo%20y%20quiero%20pedir%20una%20gorrita%20para%20mi%20mascota%20🐾"
+        target="_blank" class="whatsapp-btn" title="Escríbenos por WhatsApp">💬</a>
+
+
+    <!-- PRODUCT MODAL (QUICK VIEW) -->
+    <div class="modal-overlay" id="productModalOverlay">
+        <div class="product-modal">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+
+            <div class="modal-gallery">
+                <img src="" alt="" class="modal-main-img" id="modalMainImg">
+                <div class="modal-thumbnails" id="modalThumbnails">
+                    <!-- Inyectado por JS -->
+                </div>
+            </div>
+
+            <div class="modal-details">
+                <div class="modal-cat" id="modalCat">Categoría</div>
+                <h2 class="modal-title" id="modalTitle">Título del Producto</h2>
+                <div class="modal-price" id="modalPrice">$0</div>
+
+                <div class="size-selector-wrap">
+                    <h4>Selecciona una Talla:</h4>
+                    <div class="sizes-grid" id="modalSizes">
+                        <button class="size-btn" onclick="selectSize('XS')">XS</button>
+                        <button class="size-btn" onclick="selectSize('S')">S</button>
+                        <button class="size-btn" onclick="selectSize('M')">M</button>
+                        <button class="size-btn" onclick="selectSize('L')">L</button>
+                    </div>
+                </div>
+
+                <button class="modal-add-btn" onclick="addToCartFromModal()">Añadir al Carrito</button>
+            </div>
+        </div>
     </div>
-  </aside>
 
-  <!-- WOMPI PAYMENT MODAL -->
-  <div class="wompi-modal-overlay" id="wompiModalOverlay">
-    <div class="wompi-modal">
-      <button class="wompi-close-modal" onclick="closeWompiModal()">×</button>
+    <!-- CART SIDEBAR -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Tu Carrito 🛒</h2>
+            <button class="close-cart" onclick="toggleCart()"
+                style="border:none;background:none;font-size:1.5rem;cursor:pointer;">&times;</button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <!-- Inyectado por JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">
+                Comprar por WhatsApp
+            </button>
+        </div>
+    </aside>
 
-      <div class="wompi-modal-header">
-        <div class="wompi-modal-icon">💳</div>
-        <h2 class="wompi-modal-title">Pagar con Wompi</h2>
-        <p class="wompi-modal-sub">Ingresa tu email para continuar</p>
-      </div>
+    <div class="toast" id="toast">✅ ¡Agregado al carrito!</div>
+    <div class="toast" id="toast-error" style="background:#EF4444;">⚠️ Por favor selecciona una talla</div>
 
-      <!-- Resumen del pedido -->
-      <div class="wompi-order-summary" id="wompiOrderSummary">
-        <!-- Se llena por JS -->
-      </div>
+    <script>
+        // --- BASE DE DATOS DE PRODUCTOS ---
+        const DB = [
+            // MUNDIAL
+            {
+                id: 'col1', title: 'Gorra Colombia - Local', category: 'mundial', price: 35000,
+                images: ['img/selecciones/colombia_1.jpeg', 'img/selecciones/colombia_2.jpeg']
+            },
+            {
+                id: 'usa1', title: 'Gorra USA - Local', category: 'mundial', price: 35000,
+                images: ['img/selecciones/usa_1.jpeg', 'img/selecciones/usa_2.jpeg']
+            },
+            {
+                id: 'mex1', title: 'Gorra México', category: 'mundial', price: 35000,
+                images: ['img/selecciones/mexico_1.jpeg'] // Solo una subida
+            },
+            {
+                id: 'can1', title: 'Gorra Canadá - Local', category: 'mundial', price: 35000,
+                images: ['img/selecciones/canada_1.jpeg', 'img/selecciones/canada_2.jpeg']
+            },
+            // FUTBOL NACIONAL
+            {
+                id: 'fut1', title: 'Gorra Atlético Nacional', category: 'futbol', price: 30000,
+                images: ['img/gorra_atletico_nacional.png']
+            },
+            {
+                id: 'fut2', title: 'Gorra Deportes Tolima', category: 'futbol', price: 30000,
+                images: ['img/gorra_deportes_tolima.png']
+            },
+            // UNICOLOR
+            {
+                id: 'uni1', title: 'Gorra Celeste', category: 'unicolor', price: 25000,
+                images: ['img/gorra_celeste.png']
+            },
+            {
+                id: 'uni2', title: 'Gorra Verde', category: 'unicolor', price: 25000,
+                images: ['img/gorra_verde.png']
+            },
+            // ESTAMPADO
+            {
+                id: 'est1', title: 'Gorra Pokémon', category: 'estampado', price: 30000,
+                images: ['img/gorra_pokemon.png']
+            },
+            {
+                id: 'est2', title: 'Gorra Come Galletas', category: 'estampado', price: 30000,
+                images: ['img/gorra_come_galletas.png']
+            }
+        ];
 
-      <!-- Campo de email -->
-      <div class="wompi-form-field">
-        <label for="wompiEmail">📧 Correo electrónico</label>
-        <input type="email" id="wompiEmail" placeholder="tucorreo@ejemplo.com" />
-      </div>
+        // --- RENDERIZADO DEL CATÁLOGO ---
+        const productGrid = document.getElementById('productGrid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
 
-      <!-- Botón que lanza el widget de Wompi -->
-      <button class="wompi-pay-btn" id="wompiLaunchBtn" onclick="launchWompiWidget()">
-        💳 Ir a pagar de forma segura
-      </button>
+        function renderProducts(filter = 'all') {
+            productGrid.innerHTML = '';
+            const filtered = filter === 'all' ? DB : DB.filter(p => p.category === filter);
 
-      <div class="wompi-badges">
-        <span class="wompi-badge">🔒 SSL</span>
-        <span class="wompi-badge">🏦 PSE</span>
-        <span class="wompi-badge">💳 Tarjetas</span>
-        <span class="wompi-badge">📱 Nequi</span>
-        <span class="wompi-badge">🏪 Efecty</span>
-      </div>
-    </div>
-  </div>
+            filtered.forEach(p => {
+                const catLabel = p.category === 'mundial' ? 'Mundial 2026' :
+                    p.category === 'futbol' ? 'Fútbol Nacional' :
+                        p.category === 'unicolor' ? 'Unicolor' : 'Estampado';
 
-  <div class="toast" id="toast">✅ ¡Agregado al carrito!</div>
-  <div class="toast" id="toast-error" style="background:#EF4444;">⚠️ Por favor selecciona una talla</div>
-
-  <script>
-    // --- BASE DE DATOS DE PRODUCTOS ---
-    const DB = [
-      // MUNDIAL
-      {
-        id: 'col1', title: 'Gorra Colombia - Local', category: 'mundial', price: 35000,
-        images: ['img/selecciones/colombia_1.jpeg', 'img/selecciones/colombia_2.jpeg']
-      },
-      {
-        id: 'usa1', title: 'Gorra USA - Local', category: 'mundial', price: 35000,
-        images: ['img/selecciones/usa_1.jpeg', 'img/selecciones/usa_2.jpeg']
-      },
-      {
-        id: 'mex1', title: 'Gorra México', category: 'mundial', price: 35000,
-        images: ['img/selecciones/mexico_1.jpeg'] // Solo una subida
-      },
-      {
-        id: 'can1', title: 'Gorra Canadá - Local', category: 'mundial', price: 35000,
-        images: ['img/selecciones/canada_1.jpeg', 'img/selecciones/canada_2.jpeg']
-      },
-      // FUTBOL NACIONAL
-      {
-        id: 'fut1', title: 'Gorra Atlético Nacional', category: 'futbol', price: 30000,
-        images: ['img/gorra_atletico_nacional.png']
-      },
-      {
-        id: 'fut2', title: 'Gorra Deportes Tolima', category: 'futbol', price: 30000,
-        images: ['img/gorra_deportes_tolima.png']
-      },
-      // UNICOLOR
-      {
-        id: 'uni1', title: 'Gorra Celeste', category: 'unicolor', price: 25000,
-        images: ['img/gorra_celeste.png']
-      },
-      {
-        id: 'uni2', title: 'Gorra Verde', category: 'unicolor', price: 25000,
-        images: ['img/gorra_verde.png']
-      },
-      // ESTAMPADO
-      {
-        id: 'est1', title: 'Gorra Pokémon', category: 'estampado', price: 30000,
-        images: ['img/gorra_pokemon.png']
-      },
-      {
-        id: 'est2', title: 'Gorra Come Galletas', category: 'estampado', price: 30000,
-        images: ['img/gorra_come_galletas.png']
-      }
-    ];
-
-    // --- RENDERIZADO DEL CATÁLOGO ---
-    const productGrid = document.getElementById('productGrid');
-    const filterBtns = document.querySelectorAll('.filter-btn');
-
-    function renderProducts(filter = 'all') {
-      productGrid.innerHTML = '';
-      const filtered = filter === 'all' ? DB : DB.filter(p => p.category === filter);
-
-      filtered.forEach(p => {
-        const catLabel = p.category === 'mundial' ? 'Mundial 2026' :
-          p.category === 'futbol' ? 'Fútbol Nacional' :
-            p.category === 'unicolor' ? 'Unicolor' : 'Estampado';
-
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.onclick = () => openModal(p.id);
-        card.innerHTML = `
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.onclick = () => openModal(p.id);
+                card.innerHTML = `
           <div class="product-img-wrap">
             <img src="${p.images[0]}" alt="${p.title}">
           </div>
@@ -2206,144 +1891,144 @@
             <button class="quick-view-btn">Ver y Comprar</button>
           </div>
         `;
-        productGrid.appendChild(card);
-      });
-    }
+                productGrid.appendChild(card);
+            });
+        }
 
-    // Inicializar filtros
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        renderProducts(e.target.dataset.filter);
-      });
-    });
-
-    renderProducts();
-
-    // --- LÓGICA DEL MODAL ---
-    let currentProduct = null;
-    let selectedSize = null;
-
-    function openModal(id) {
-      currentProduct = DB.find(p => p.id === id);
-      selectedSize = null; // Reiniciar selección
-
-      document.getElementById('modalTitle').innerText = currentProduct.title;
-      document.getElementById('modalPrice').innerText = '$' + currentProduct.price.toLocaleString('es-CO');
-
-      const catLabel = currentProduct.category === 'mundial' ? 'Mundial 2026' :
-        currentProduct.category === 'futbol' ? 'Fútbol Nacional' :
-          currentProduct.category === 'unicolor' ? 'Unicolor' : 'Estampado';
-      document.getElementById('modalCat').innerText = catLabel;
-
-      setModalImage(currentProduct.images[0]);
-
-      // Miniaturas
-      const thumbs = document.getElementById('modalThumbnails');
-      thumbs.innerHTML = '';
-      if (currentProduct.images.length > 1) {
-        currentProduct.images.forEach((img, index) => {
-          const t = document.createElement('img');
-          t.src = img;
-          t.className = 'modal-thumb ' + (index === 0 ? 'active' : '');
-          t.onclick = () => {
-            document.querySelectorAll('.modal-thumb').forEach(el => el.classList.remove('active'));
-            t.classList.add('active');
-            setModalImage(img);
-          };
-          thumbs.appendChild(t);
+        // Inicializar filtros
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderProducts(e.target.dataset.filter);
+            });
         });
-      }
 
-      // Reiniciar botones de talla
-      document.querySelectorAll('#modalSizes .size-btn').forEach(btn => btn.classList.remove('selected'));
+        renderProducts();
 
-      document.getElementById('productModalOverlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+        // --- LÓGICA DEL MODAL ---
+        let currentProduct = null;
+        let selectedSize = null;
 
-    function setModalImage(src) {
-      document.getElementById('modalMainImg').src = src;
-    }
+        function openModal(id) {
+            currentProduct = DB.find(p => p.id === id);
+            selectedSize = null; // Reiniciar selección
 
-    function closeModal() {
-      document.getElementById('productModalOverlay').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+            document.getElementById('modalTitle').innerText = currentProduct.title;
+            document.getElementById('modalPrice').innerText = '$' + currentProduct.price.toLocaleString('es-CO');
 
-    function selectSize(size) {
-      selectedSize = size;
-      document.querySelectorAll('#modalSizes .size-btn').forEach(btn => {
-        btn.classList.remove('selected');
-        if (btn.innerText === size) btn.classList.add('selected');
-      });
-    }
+            const catLabel = currentProduct.category === 'mundial' ? 'Mundial 2026' :
+                currentProduct.category === 'futbol' ? 'Fútbol Nacional' :
+                    currentProduct.category === 'unicolor' ? 'Unicolor' : 'Estampado';
+            document.getElementById('modalCat').innerText = catLabel;
 
-    // Cerrar modal al cliquear afuera
-    document.getElementById('productModalOverlay').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('productModalOverlay')) closeModal();
-    });
+            setModalImage(currentProduct.images[0]);
 
-    // --- LÓGICA DEL CARRITO ---
-    let cart = [];
+            // Miniaturas
+            const thumbs = document.getElementById('modalThumbnails');
+            thumbs.innerHTML = '';
+            if (currentProduct.images.length > 1) {
+                currentProduct.images.forEach((img, index) => {
+                    const t = document.createElement('img');
+                    t.src = img;
+                    t.className = 'modal-thumb ' + (index === 0 ? 'active' : '');
+                    t.onclick = () => {
+                        document.querySelectorAll('.modal-thumb').forEach(el => el.classList.remove('active'));
+                        t.classList.add('active');
+                        setModalImage(img);
+                    };
+                    thumbs.appendChild(t);
+                });
+            }
 
-    function toggleCart() {
-      const overlay = document.getElementById('cartOverlay');
-      overlay.classList.toggle('active');
-      if (overlay.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-        closeModal(); // Cierra el modal si estaba abierto
-      } else {
-        document.body.style.overflow = '';
-      }
-    }
+            // Reiniciar botones de talla
+            document.querySelectorAll('#modalSizes .size-btn').forEach(btn => btn.classList.remove('selected'));
 
-    function addToCartFromModal() {
-      if (!selectedSize) {
-        const errToast = document.getElementById('toast-error');
-        errToast.classList.add('show');
-        setTimeout(() => errToast.classList.remove('show'), 3000);
-        return;
-      }
+            document.getElementById('productModalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-      cart.push({
-        id: currentProduct.id,
-        name: currentProduct.title,
-        size: selectedSize,
-        price: currentProduct.price,
-        img: currentProduct.images[0]
-      });
+        function setModalImage(src) {
+            document.getElementById('modalMainImg').src = src;
+        }
 
-      updateCartUI();
-      closeModal();
+        function closeModal() {
+            document.getElementById('productModalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3000);
-    }
+        function selectSize(size) {
+            selectedSize = size;
+            document.querySelectorAll('#modalSizes .size-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.innerText === size) btn.classList.add('selected');
+            });
+        }
 
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCartUI();
-    }
+        // Cerrar modal al cliquear afuera
+        document.getElementById('productModalOverlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('productModalOverlay')) closeModal();
+        });
 
-    function updateCartUI() {
-      document.getElementById('cart-count').innerText = cart.length;
-      const cartBody = document.getElementById('cartBody');
-      const cartTotal = document.getElementById('cartTotal');
+        // --- LÓGICA DEL CARRITO ---
+        let cart = [];
 
-      if (cart.length === 0) {
-        cartBody.innerHTML = `<div class="cart-empty"><div style="font-size:3rem;">🛍️</div><p>Tu carrito está vacío.</p></div>`;
-        cartTotal.innerText = '$0';
-        return;
-      }
+        function toggleCart() {
+            const overlay = document.getElementById('cartOverlay');
+            overlay.classList.toggle('active');
+            if (overlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+                closeModal(); // Cierra el modal si estaba abierto
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
 
-      let html = '';
-      let total = 0;
-      cart.forEach((item, index) => {
-        total += item.price;
-        html += `
+        function addToCartFromModal() {
+            if (!selectedSize) {
+                const errToast = document.getElementById('toast-error');
+                errToast.classList.add('show');
+                setTimeout(() => errToast.classList.remove('show'), 3000);
+                return;
+            }
+
+            cart.push({
+                id: currentProduct.id,
+                name: currentProduct.title,
+                size: selectedSize,
+                price: currentProduct.price,
+                img: currentProduct.images[0]
+            });
+
+            updateCartUI();
+            closeModal();
+
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const cartBody = document.getElementById('cartBody');
+            const cartTotal = document.getElementById('cartTotal');
+
+            if (cart.length === 0) {
+                cartBody.innerHTML = `<div class="cart-empty"><div style="font-size:3rem;">🛍️</div><p>Tu carrito está vacío.</p></div>`;
+                cartTotal.innerText = '$0';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
           <div class="cart-item">
             <img src="${item.img}" class="cart-item-img">
             <div class="cart-item-info">
@@ -2354,110 +2039,25 @@
             </div>
           </div>
         `;
-      });
-      cartBody.innerHTML = html;
-      cartTotal.innerText = '$' + total.toLocaleString('es-CO');
-    }
+            });
+            cartBody.innerHTML = html;
+            cartTotal.innerText = '$' + total.toLocaleString('es-CO');
+        }
 
-    function checkoutWhatsApp() {
-      if (cart.length === 0) { alert("Agrega gorras antes de comprar."); return; }
-      let mensaje = "¡Hola! Vengo de la tienda online y quiero comprar las siguientes gorras:%0A%0A";
-      let total = 0;
-      cart.forEach((item, i) => {
-        mensaje += `${i + 1}. ${item.name} *(Talla ${item.size})* - $${item.price.toLocaleString('es-CO')}%0A`;
-        total += item.price;
-      });
-      mensaje += `%0A*Total a pagar: $${total.toLocaleString('es-CO')}*`;
-      window.open(`https://wa.me/573000000000?text=${mensaje}`, '_blank');
-    }
-    // --- WOMPI PAYMENT LOGIC ---
-    const WOMPI_PUBLIC_KEY 
-;
+        function checkoutWhatsApp() {
+            if (cart.length === 0) { alert("Agrega gorras antes de comprar."); return; }
+            let mensaje = "¡Hola! Vengo de la tienda online y quiero comprar las siguientes gorras:%0A%0A";
+            let total = 0;
+            cart.forEach((item, i) => {
+                mensaje += `${i + 1}. ${item.name} *(Talla ${item.size})* - $${item.price.toLocaleString('es-CO')}%0A`;
+                total += item.price;
+            });
+            mensaje += `%0A*Total a pagar: $${total.toLocaleString('es-CO')}*`;
+            window.open(`https://wa.me/573000000000?text=${mensaje}`, '_blank');
+        }
 
-    function openWompiModal() {
-      if (cart.length === 0) {
-        alert("Agrega gorras antes de pagar.");
-        return;
-      }
 
-      // Render order summary
-      const summary = document.getElementById('wompiOrderSummary');
-      let total = 0;
-      let html = '';
-      cart.forEach(item => {
-        total += item.price;
-        html += `<div class="wompi-order-item"><span>${item.name} (Talla ${item.size})</span><span>$${item.price.toLocaleString('es-CO')}</span></div>`;
-      });
-      html += `<div class="wompi-order-total"><span>Total a pagar</span><span>$${total.toLocaleString('es-CO')}</span></div>`;
-      summary.innerHTML = html;
-
-      document.getElementById('wompiModalOverlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeWompiModal() {
-      document.getElementById('wompiModalOverlay').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    document.getElementById('wompiModalOverlay').addEventListener('click', function(e) {
-      if (e.target === this) closeWompiModal();
-    });
-
-    function generateReference() {
-      return 'LBP-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
-    }
-
-    function launchWompiWidget() {
-      const email = document.getElementById('wompiEmail').value.trim();
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        document.getElementById('wompiEmail').focus();
-        document.getElementById('wompiEmail').style.borderColor = '#EF4444';
-        setTimeout(() => { document.getElementById('wompiEmail').style.borderColor = '#E5E7EB'; }, 2000);
-        return;
-      }
-
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      const amountInCents = total * 100; // Wompi usa centavos
-      const reference = generateReference();
-
-      closeWompiModal();
-
-      // Crear y enviar formulario de Wompi (checkout hosted)
-      const form = document.createElement('form');
-      form.method = 'GET';
-      form.action = 'https://checkout.wompi.co/p/';
-      form.target = '_blank';
-
-      const fields = {
-        'public-key': WOMPI_PUBLIC_KEY,
-        'currency': 'COP',
-        'amount-in-cents': amountInCents,
-        'reference': reference,
-        'customer-data:email': email,
-       
-      };
-
-      Object.entries(fields).forEach(([key, val]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = val;
-        form.appendChild(input);
-      });
-
-      document.body.appendChild(form);
-      form.submit();
-      document.body.removeChild(form);
-
-      // Toast de confirmación
-      const t = document.getElementById('toast');
-      t.innerHTML = '🔒 Redirigiendo a Wompi...';
-      t.classList.add('show');
-      setTimeout(() => { t.classList.remove('show'); t.innerHTML = '✅ ¡Agregado al carrito!'; }, 3500);
-    }
-
-  </script>
+    </script>
 </body>
 
 </html>
