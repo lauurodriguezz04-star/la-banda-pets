@@ -2371,6 +2371,14 @@
 
         // --- WOMPI PAYMENT LOGIC ---
         const WOMPI_PUBLIC_KEY = 'pub_prod_mL4uj9AWbYtmTiu5ZBscV6zcJzFGgsEb';
+        const WOMPI_INTEGRITY_KEY = 'prod_integrity_cJ0H4yGG6VUPn214GOB6X97Jc81lyA0l';
+
+        // Calcula SHA-256 en el navegador (sin librerías externas)
+        async function sha256(message) {
+            const buf = new TextEncoder().encode(message);
+            const hash = await crypto.subtle.digest('SHA-256', buf);
+            return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
 
         function openWompiModal() {
             if (cart.length === 0) { alert('Agrega gorras antes de pagar.'); return; }
@@ -2400,7 +2408,7 @@
             return 'LBP-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
         }
 
-        function launchWompiWidget() {
+        async function launchWompiWidget() {
             const email = document.getElementById('wompiEmail').value.trim();
             if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                 document.getElementById('wompiEmail').style.borderColor = '#EF4444';
@@ -2411,6 +2419,11 @@
             const total = cart.reduce((sum, item) => sum + item.price, 0);
             const amountInCents = total * 100;
             const reference = generateReference();
+            const currency = 'COP';
+
+            // Firma de integridad: SHA256(reference + amountInCents + currency + integrityKey)
+            const integrity = await sha256(`${reference}${amountInCents}${currency}${WOMPI_INTEGRITY_KEY}`);
+
             closeWompiModal();
 
             const form = document.createElement('form');
@@ -2419,9 +2432,10 @@
             form.target = '_blank';
             const fields = {
                 'public-key': WOMPI_PUBLIC_KEY,
-                'currency': 'COP',
+                'currency': currency,
                 'amount-in-cents': amountInCents,
                 'reference': reference,
+                'integrity': integrity,
                 'customer-data:email': email
             };
             Object.entries(fields).forEach(([key, val]) => {
