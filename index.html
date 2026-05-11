@@ -2416,6 +2416,10 @@
                 setTimeout(() => { document.getElementById('wompiEmail').style.borderColor = '#E5E7EB'; }, 2000);
                 return;
             }
+
+            // Abrir ventana ANTES del await para evitar bloqueo de popup
+            const win = window.open('', '_blank');
+
             const total = cart.reduce((sum, item) => sum + item.price, 0);
             const amountInCents = total * 100;
             const reference = generateReference();
@@ -2424,30 +2428,18 @@
             // Firma de integridad: SHA256(reference + amountInCents + currency + integrityKey)
             const integrity = await sha256(`${reference}${amountInCents}${currency}${WOMPI_INTEGRITY_KEY}`);
 
-            closeWompiModal();
-
-            const form = document.createElement('form');
-            form.method = 'GET';
-            form.action = 'https://checkout.wompi.co/p/';
-            form.target = '_blank';
-            const fields = {
+            // Construir URL y navegar la ventana ya abierta
+            const params = new URLSearchParams({
                 'public-key': WOMPI_PUBLIC_KEY,
                 'currency': currency,
                 'amount-in-cents': amountInCents,
                 'reference': reference,
                 'integrity': integrity,
                 'customer-data:email': email
-            };
-            Object.entries(fields).forEach(([key, val]) => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = key;
-                input.value = val;
-                form.appendChild(input);
             });
-            document.body.appendChild(form);
-            form.submit();
-            document.body.removeChild(form);
+            win.location.href = 'https://checkout.wompi.co/p/?' + params.toString();
+
+            closeWompiModal();
 
             const t = document.getElementById('toast');
             t.innerHTML = '🔒 Redirigiendo a Wompi...';
